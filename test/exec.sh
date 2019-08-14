@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#!/bin/sh
+export PATH=/usr/sbin:$PATH
 echo 'Date: ' `date` 
 echo 'Host: ' `hostname` 
 echo 'System: ' `uname -spo` 
-echo 'GPU: ' `lspci`
+echo 'GPU: ' `lspci | grep NVIDIA`
