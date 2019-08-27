@@ -1,0 +1,5 @@
+Hello CHTC from Job 0 running on dcosta2-8959484.0-gpu2000.chtc.wisc.edu
+
+ 8192 x 8192 GPU matmul took: 0.12 sec, 8979.05 G ops/sec
+
+ 8192 x 8192 CPU matmul took: 1.15 sec, 952.13 G ops/sec
