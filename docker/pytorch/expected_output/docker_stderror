@@ -1,0 +1,48 @@
+Unable to find image 'pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime' locally
+1.1.0-cuda10.0-cudnn7.5-runtime: Pulling from pytorch/pytorch
+7e6591854262: Pulling fs layer
+089d60cb4e0a: Pulling fs layer
+9c461696bc09: Pulling fs layer
+45085432511a: Pulling fs layer
+8f7a8b3b4e34: Pulling fs layer
+09969694a6bb: Pulling fs layer
+028d470d768d: Pulling fs layer
+8f7a8b3b4e34: Waiting
+09969694a6bb: Waiting
+51c78c8b8a9e: Pulling fs layer
+028d470d768d: Waiting
+b6d5eec7f709: Pulling fs layer
+51c78c8b8a9e: Waiting
+41b3b4c11f22: Pulling fs layer
+b6d5eec7f709: Waiting
+089d60cb4e0a: Verifying Checksum
+089d60cb4e0a: Download complete
+9c461696bc09: Verifying Checksum
+9c461696bc09: Download complete
+45085432511a: Verifying Checksum
+45085432511a: Download complete
+7e6591854262: Verifying Checksum
+7e6591854262: Download complete
+8f7a8b3b4e34: Verifying Checksum
+8f7a8b3b4e34: Download complete
+51c78c8b8a9e: Download complete
+b6d5eec7f709: Verifying Checksum
+b6d5eec7f709: Download complete
+7e6591854262: Pull complete
+089d60cb4e0a: Pull complete
+41b3b4c11f22: Verifying Checksum
+41b3b4c11f22: Download complete
+9c461696bc09: Pull complete
+45085432511a: Pull complete
+8f7a8b3b4e34: Pull complete
+09969694a6bb: Verifying Checksum
+09969694a6bb: Download complete
+09969694a6bb: Pull complete
+028d470d768d: Verifying Checksum
+028d470d768d: Download complete
+028d470d768d: Pull complete
+51c78c8b8a9e: Pull complete
+b6d5eec7f709: Pull complete
+41b3b4c11f22: Pull complete
+Digest: sha256:0a5c38be5121a53b23a7f76431017b3a18146693790d1299f3b22e070faedfba
+Status: Downloaded newer image for pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
