@@ -13,7 +13,7 @@ We set the Docker image to version of Pytorch that is build with CUDA.
 docker_image = pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
 ```
 
-Also, we need the python script as well as the data transfered to the compute node. 
+Also, we need the python script as well as the data transferred to the compute node. 
 ```
 transfer_input_files = main.py, MNIST_data.tar.gz
 ```

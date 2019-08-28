@@ -1,19 +1,21 @@
 
 ### Running Hello GPU via Docker
 
-This is a simple example to pull the [Nvidia CUDA container](https://hub.docker.com/r/nvidia/cuda/) from Dockerhub. 
+This is a simple example that uses the [Nvidia CUDA container](https://hub.docker.com/r/nvidia/cuda/) from Dockerhub. 
 
 
 ### Submit file 
 We set the `universe` and the `docker_image` tags to make sure CHTC knows to
-pull in the right images. 
+pull in the right images.
 
 ```
 universe = docker
 docker_image = nvidia/cuda:10.1-base-ubuntu18.04
 ```
 
-We require a machine with a modern version of the CUDA driver. CUDA drivers are usually backwards compatible. So a machine with CUDA Driver version 10.1 should be able to run containers built with older versions of CUDA. 
+We require a machine with a modern version of the CUDA driver. CUDA drivers are
+usually backwards compatible. So a machine with CUDA Driver version 10.1 should
+be able to run containers built with older versions of CUDA. 
 ```
 Requirements = (Target.CUDADriverVersion >= 10.1)
 ```
