@@ -16,32 +16,33 @@ containers.
 
 ### Examples 
 
-1. *Hello\_GPU* This is a simple example to see if we can access a GPU from
+1. **Hello\_GPU** This is a simple example to see if we can access a GPU from
    inside a Docker container on CHTC. It uses the
 [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda) Docker image which is a
 tiny container that only contains the Nvidia CUDA toolkit. [Click here to
 access this example](./hello_gpu/). 
 
-2. *Matrix Multiplication with TensorFlow (Python)* This example uses a
+2. **Matrix Multiplication with TensorFlow (Python)** This example uses a
    [TensorFlow](https://www.tensorflow.org) [Docker
 container](https://hub.docker.com/r/tensorflow/tensorflow/) to benchmark matrix
 multiplication on a GPU vs the same matrix multiplication on a CPU. [Click here
 to access this example](./tensorflow_python/). 
 
-
-3. *Convolutional Neural Network with PyTorch (Python)* This example shows how
+3. **Convolutional Neural Network with PyTorch (Python)** This example shows how
    to send training and test data to the compute node along with the script.
 After processing the trained network is returned to the submit node.  [Click
 here to access this example](./pytorch_python/). 
  
 ### Finding containers
 1. Pick a container that is built on a more modern version of CUDA Toolkit. Although the toolkits are backwards compatible, the more modern the toolkit, the less likely you are to run into problems. 
-2. [Rocker](https://hub.docker.com/u/rocker) is a great place to look if you are  you are looking for machine learning GPU containers for the [R Project for Statistical Computing](https://www.r-project.org)
-3. [Nvidia Catalog](https://ngc.nvidia.com/catalog/landing) has a good
+2. [Nvidia Catalog](https://ngc.nvidia.com/catalog/landing) has a good
    selection of containers that use the GPU for machine learning, inference,
 visualization etc. These containers can be uploaded to your own account on
 Dockerhub. Alternatively, they can be built directly on Dockerhub with the
 Docker Automated Builder (see below).  
+3. [Rocker](https://hub.docker.com/u/rocker) is a great place to look if you
+   are  you are looking for machine learning GPU containers for the [R Project
+for Statistical Computing](https://www.r-project.org)
 
 
 ### Building containers
