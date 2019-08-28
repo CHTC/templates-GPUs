@@ -1,5 +1,5 @@
-# hello_gpu.sub
-# Submit file to access the GPU via docker
+# test_tensorflow.sub
+# Submit file 
 
 # Must set the universe to Docker
 universe = docker

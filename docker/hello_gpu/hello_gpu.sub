@@ -3,7 +3,7 @@
 
 # Must set the universe to Docker
 universe = docker
-docker_image = nvidia/cuda
+docker_image = nvidia/cuda:10.1-base-ubuntu18.04
 
 # set the log, error and output files 
 log = hello_gpu.log.txt
