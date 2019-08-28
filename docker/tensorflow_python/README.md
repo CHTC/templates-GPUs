@@ -20,8 +20,7 @@ Also, we ask for our Python script to be transferred to the compute node.
 transfer_input_files = test_tensorflow.py
 ```
 
-The rest of the submit file remains the same. 
-
+The rest of the submit file remains the same.  We run the submit file with 
 ```shell
 condor_submit test_tensorflow.sub
 ```
@@ -44,5 +43,5 @@ The output should be similar to below.
 We can see that the GPU was almost 10x faster. These kinds of speed ups are not uncommon. 
 
 You can see a complete list of files expected in the output in the [expected
-output directory](./expected_output/)
+output directory](./expected_output/).
 

@@ -36,7 +36,7 @@ We run `nvidia-smi` which gives us diagnostic information about the GPU.
 
 
 ### Output
-The output should be similar to below. You can see a complete list of files expected in the output in the [expected output directory](./expected_output/)
+The output should be similar to below.
 ```
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 418.87.00    Driver Version: 418.87.00    CUDA Version: 10.1     |
@@ -58,4 +58,6 @@ The output should be similar to below. You can see a complete list of files expe
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
 ```
+You can see a complete list of files expected in the output in the [expected output directory](./expected_output/).
+
 

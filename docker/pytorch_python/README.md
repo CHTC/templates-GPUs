@@ -18,6 +18,7 @@ Also, we need the python script as well as the data transferred to the compute n
 transfer_input_files = main.py, MNIST_data.tar.gz
 ```
 
+The rest of the submit file remains the same.  We run the submit file with 
 ```shell
 condor_submit pytorch_cnn.sub
 ```
