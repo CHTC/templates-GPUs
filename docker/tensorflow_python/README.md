@@ -45,3 +45,8 @@ We can see that the GPU was almost 10x faster. These kinds of speed ups are not 
 You can see a complete list of files expected in the output in the [expected
 output directory](./expected_output/).
 
+### Attribution
+This Python script was initially copied [from an
+answer](https://stackoverflow.com/a/41810634) by [User:Yaroslav
+Bulatov](https://stackoverflow.com/users/419116/yaroslav-bulatov) on the
+[StackOverflow](https://stackoverflow.com/) website. The script was then further modified to run in the CHTC environment. 
