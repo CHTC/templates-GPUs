@@ -1,0 +1,32 @@
+universe = vanilla
++WantFlocking = true
+
+# the script that will be run when the job starts
+executable = environment_setup.sh
+
+# include the cluster id and process id that are set at runtime
+log = $(Cluster)_$(Process).log
+error = $(Cluster)_$(Process).err
+output = $(Cluster)_$(Process).out
+
+# these files get transferred from the submit node to the server on which the program is executing
+transfer_input_files = Miniconda3-latest-Linux-x86_64.sh, environment_setup.sh, libc.tar.gz, my_tensorflow_program.py
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+# specify the resources required
+request_cpus = 1
+request_gpus = 1
+request_memory = 1GB
+request_disk = 5GB
+
+# this is a whitelist of servers that our program can run on
+# TODO: instead of whitelist, use GPU/server properties (will require corresponding changes in environment_setup.sh)
+requirements = (TARGET.Machine=="gitter0000.chtc.wisc.edu") || (TARGET.Machine=="ahlquist0000.chtc.wisc.edu") || (TARGET.Machine=="ahlquist2000.chtc.wisc.edu") || (TARGET.Machine=="ahlquist2001.chtc.wisc.edu") || (TARGET.Machine=="gpu2001.chtc.wisc.edu") || (TARGET.Machine=="gpu2000.chtc.wisc.edu") || (TARGET.Machine=="tekin0000.chtc.wisc.edu") || (TARGET.Machine=="vetsigian0000.chtc.wisc.edu") || (TARGET.Machine=="gzk-1.chtc.wisc.edu") || (TARGET.Machine=="gzk-2.chtc.wisc.edu") || (TARGET.Machine=="gzk-3.chtc.wisc.edu") || (TARGET.Machine=="gzk-4.chtc.wisc.edu")
+
+# copy environment variables that are set dynamically by HTCondor
+environment = "cluster=$(Cluster) process=$(Process) runningon=$$(Name)"
+
+# this is how many jobs to queue
+queue 1
+
