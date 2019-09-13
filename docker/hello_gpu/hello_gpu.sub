@@ -1,0 +1,32 @@
+# hello_gpu.sub
+# Submit file to access the GPU via docker
+
+# Must set the universe to Docker
+universe = docker
+docker_image = nvidia/cuda:10.1-base-ubuntu18.04
+
+# set the log, error and output files 
+log = hello_gpu.log.txt
+error = hello_gpu.err.txt
+output = hello_gpu.out.txt
+
+# set the executable to run
+executable = hello_gpu.sh
+arguments = $(Process)
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+# We require a machine with a modern version of the CUDA driver
+Requirements = (Target.CUDADriverVersion >= 10.1)
+
+# We must request 1 CPU in addition to 1 GPU
+request_cpus = 1
+request_gpus = 1
+
+# select some memory and disk space
+request_memory = 1GB
+request_disk = 500MB
+
+# Tell HTCondor to run 1 instances of our job:
+queue 1

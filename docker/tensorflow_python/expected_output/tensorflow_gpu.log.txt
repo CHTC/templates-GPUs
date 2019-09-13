@@ -1,0 +1,36 @@
+000 (8959484.000.000) 2019-08-27 09:01:19 Job submitted from host: <128.105.244.191:9618?addrs=128.105.244.191-9618&alias=submit-1.chtc.wisc.edu&noUDP&sock=schedd_2058300_2d2a_12>
+...
+040 (8959484.000.000) 2019-08-27 09:04:03 Started transferring input files
+	Transferring to host: <128.105.245.10:9618?addrs=128.105.245.10-9618&alias=gpu2000.chtc.wisc.edu&noUDP&sock=starter_32162_c9d5_20651>
+...
+040 (8959484.000.000) 2019-08-27 09:04:03 Finished transferring input files
+...
+001 (8959484.000.000) 2019-08-27 09:04:04 Job executing on host: <128.105.245.10:9618?addrs=128.105.245.10-9618&alias=gpu2000.chtc.wisc.edu&noUDP&sock=startd_32073_fd1f_3>
+...
+006 (8959484.000.000) 2019-08-27 09:06:35 Image size of job updated: 263
+	263  -  MemoryUsage of job (MB)
+	269656  -  ResidentSetSize of job (KB)
+...
+040 (8959484.000.000) 2019-08-27 09:06:35 Started transferring output files
+...
+040 (8959484.000.000) 2019-08-27 09:06:35 Finished transferring output files
+...
+005 (8959484.000.000) 2019-08-27 09:06:35 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:02, Sys 0 00:00:03  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:02, Sys 0 00:00:03  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	7116  -  Run Bytes Sent By Job
+	2224  -  Run Bytes Received By Job
+	7116  -  Total Bytes Sent By Job
+	2224  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :     0.03        1        20 
+	   Disk (KB)            :    35      512000 725632508 
+	   Gpus                 :                 1         1 "CUDA1"
+	   Ioheavy              :                           0 
+	   Memory (MB)          :   263        1024    256194 
+
+	Job terminated of its own accord at 2019-08-27T14:06:35Z.
+...

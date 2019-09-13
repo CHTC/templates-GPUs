@@ -1,0 +1,36 @@
+# test_tensorflow.sub
+# Submit file 
+
+# Must set the universe to Docker
+universe = docker
+docker_image = tensorflow/tensorflow:1.14.0-gpu-py3
+
+# set the log, error and output files 
+log = tensorflow_gpu.log.txt
+error = tensorflow_gpu.err.txt
+output = tensorflow_gpu.out.txt
+
+# set the executable to run
+executable = test_tensorflow.sh
+arguments = $(Process)
+
+# take our python script to the compute node
+transfer_input_files = test_tensorflow.py
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+
+# We require a machine with a modern version of the CUDA driver
+Requirements = (Target.CUDADriverVersion >= 10.1)
+
+# We must request 1 CPU in addition to 1 GPU
+request_cpus = 1
+request_gpus = 1
+
+# select some memory and disk space
+request_memory = 1GB
+request_disk = 500MB
+
+# Tell HTCondor to run 1 instances of our job:
+queue 1

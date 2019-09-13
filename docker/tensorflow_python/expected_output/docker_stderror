@@ -1,0 +1,69 @@
+Unable to find image 'tensorflow/tensorflow:1.14.0-gpu-py3' locally
+1.14.0-gpu-py3: Pulling from tensorflow/tensorflow
+6abc03819f3e: Pulling fs layer
+05731e63f211: Pulling fs layer
+0bd67c50d6be: Pulling fs layer
+d5c73556cc1e: Pulling fs layer
+e059dd98ac7c: Pulling fs layer
+e4732fdd9b39: Pulling fs layer
+cbeb255d6ab1: Pulling fs layer
+0809e577f6d6: Pulling fs layer
+421e23cecfe8: Pulling fs layer
+a5abf0996067: Pulling fs layer
+d718e4299c08: Pulling fs layer
+f401bdaa92ad: Pulling fs layer
+6669e38ab1ba: Pulling fs layer
+5b6ac7f35d3d: Pulling fs layer
+e4732fdd9b39: Waiting
+f401bdaa92ad: Waiting
+d718e4299c08: Waiting
+cbeb255d6ab1: Waiting
+6669e38ab1ba: Waiting
+0809e577f6d6: Waiting
+5b6ac7f35d3d: Waiting
+421e23cecfe8: Waiting
+a5abf0996067: Waiting
+d5c73556cc1e: Waiting
+e059dd98ac7c: Waiting
+05731e63f211: Verifying Checksum
+05731e63f211: Download complete
+0bd67c50d6be: Verifying Checksum
+0bd67c50d6be: Download complete
+d5c73556cc1e: Verifying Checksum
+d5c73556cc1e: Download complete
+e4732fdd9b39: Download complete
+e059dd98ac7c: Verifying Checksum
+e059dd98ac7c: Download complete
+6abc03819f3e: Verifying Checksum
+6abc03819f3e: Download complete
+6abc03819f3e: Pull complete
+05731e63f211: Pull complete
+421e23cecfe8: Verifying Checksum
+421e23cecfe8: Download complete
+0bd67c50d6be: Pull complete
+a5abf0996067: Verifying Checksum
+a5abf0996067: Download complete
+d718e4299c08: Verifying Checksum
+d718e4299c08: Download complete
+d5c73556cc1e: Pull complete
+0809e577f6d6: Verifying Checksum
+0809e577f6d6: Download complete
+6669e38ab1ba: Download complete
+5b6ac7f35d3d: Verifying Checksum
+5b6ac7f35d3d: Download complete
+e059dd98ac7c: Pull complete
+e4732fdd9b39: Pull complete
+cbeb255d6ab1: Verifying Checksum
+cbeb255d6ab1: Download complete
+f401bdaa92ad: Verifying Checksum
+f401bdaa92ad: Download complete
+cbeb255d6ab1: Pull complete
+0809e577f6d6: Pull complete
+421e23cecfe8: Pull complete
+a5abf0996067: Pull complete
+d718e4299c08: Pull complete
+f401bdaa92ad: Pull complete
+6669e38ab1ba: Pull complete
+5b6ac7f35d3d: Pull complete
+Digest: sha256:e72e66b3dcb9c9e8f4e5703965ae1466b23fe8cad59e1c92c6e9fa58f8d81dc8
+Status: Downloaded newer image for tensorflow/tensorflow:1.14.0-gpu-py3

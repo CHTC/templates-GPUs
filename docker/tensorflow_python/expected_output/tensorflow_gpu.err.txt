@@ -1,0 +1,36 @@
+WARNING: Logging before flag parsing goes to stderr.
+W0827 14:06:17.008339 140651810420544 deprecation_wrapper.py:119] From test_tensorflow.py:32: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+W0827 14:06:17.008575 140651810420544 deprecation_wrapper.py:119] From test_tensorflow.py:32: The name tf.GraphOptions is deprecated. Please use tf.compat.v1.GraphOptions instead.
+
+W0827 14:06:17.008672 140651810420544 deprecation_wrapper.py:119] From test_tensorflow.py:33: The name tf.OptimizerOptions is deprecated. Please use tf.compat.v1.OptimizerOptions instead.
+
+W0827 14:06:17.008797 140651810420544 deprecation_wrapper.py:119] From test_tensorflow.py:34: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+2019-08-27 14:06:17.008980: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-08-27 14:06:17.028271: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-08-27 14:06:17.214414: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x39a4430 executing computations on platform CUDA. Devices:
+2019-08-27 14:06:17.214488: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Tesla P100-PCIE-16GB, Compute Capability 6.0
+2019-08-27 14:06:17.233506: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2400000000 Hz
+2019-08-27 14:06:17.241508: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x3f02220 executing computations on platform Host. Devices:
+2019-08-27 14:06:17.241570: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-08-27 14:06:17.244335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:d8:00.0
+2019-08-27 14:06:17.244967: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-08-27 14:06:17.248340: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
+2019-08-27 14:06:17.250338: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcufft.so.10.0
+2019-08-27 14:06:17.250867: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcurand.so.10.0
+2019-08-27 14:06:17.253609: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusolver.so.10.0
+2019-08-27 14:06:17.255724: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcusparse.so.10.0
+2019-08-27 14:06:17.260268: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-08-27 14:06:17.262313: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2019-08-27 14:06:17.262351: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudart.so.10.0
+2019-08-27 14:06:17.263639: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-27 14:06:17.263656: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2019-08-27 14:06:17.263666: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2019-08-27 14:06:17.265799: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15216 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:d8:00.0, compute capability: 6.0)
+W0827 14:06:17.273711 140651810420544 deprecation_wrapper.py:119] From test_tensorflow.py:36: The name tf.global_variables_initializer is deprecated. Please use tf.compat.v1.global_variables_initializer instead.
+
+2019-08-27 14:06:19.041086: W tensorflow/compiler/jit/mark_for_compilation_pass.cc:1412] (One-time warning): Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU.  To confirm that XLA is active, pass --vmodule=xla_compilation_cache=1 (as a proper command-line flag, not via TF_XLA_FLAGS) or set the envvar XLA_FLAGS=--xla_hlo_profile.
+2019-08-27 14:06:20.102616: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcublas.so.10.0
