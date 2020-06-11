@@ -1,0 +1,24 @@
+universe = vanilla
+executable = exec.sh
+output = $(Cluster)_$(Process).out
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+# The conda environment will install cudatoolkit verison 10.2
+# This requirement ensures the execute node has a new enough driver to run it
+# Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
+requirements = (CUDACapability >= 10.2)
+request_gpus = 1
+
++WantGPULab = true
++GPUJobLength = "short"
+
+request_cpus = 1
+request_memory = 1GB
+request_disk = 1GB
+
+log = $(Cluster)_$(Process).log
+error = $(Cluster)_$(Process).err
+
+queue 1

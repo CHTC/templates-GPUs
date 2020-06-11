@@ -1,0 +1,8 @@
+name: pytorch-gpu
+channels:
+  - defaults
+dependencies:
+  - cudatoolkit=10.2
+  - python=3.7
+  - pytorch::pytorch=1.4
+  - pytorch::torchvision=0.6
