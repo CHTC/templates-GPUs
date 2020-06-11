@@ -10,11 +10,19 @@ echo 'GPU: ' `lspci | grep NVIDIA`
 # Download a specific version of Miniconda instead of latest to improve
 # reproducibility
 export HOME=$PWD
-export PATH
-wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh -O miniconda.sh
+wget -q https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh -O miniconda.sh
 sh miniconda.sh -b -p $HOME/miniconda3
 rm miniconda.sh
 export PATH=$HOME/miniconda3/bin:$PATH
+
+# Update conda as workaround for https://github.com/conda/conda/issues/9681
+# Will no longer be needed once conda >= 4.8.3 is available from repo.anaconda.com
+conda install conda=4.8.3
+
+# Set up conda
+source $HOME/miniconda3/etc/profile.d/conda.sh
+hash -r
+conda config --set always_yes yes --set changeps1 no
 
 # Install packages specified in the environment file
 conda env create -f environment.yml
@@ -24,4 +32,5 @@ conda activate pytorch-gpu
 conda list
 
 # Modify this line to run your desired Python script
-python -c "import pytorch; print(pytorch.__version__)"
+python -c "import torch; print(torch.__version__); print(torch.cuda.get_device_name(0))"
+
