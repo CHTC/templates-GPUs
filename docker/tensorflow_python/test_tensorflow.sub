@@ -28,7 +28,7 @@ request_cpus = 1
 request_gpus = 1
 
 # select some memory and disk space
-request_memory = 1GB
+request_memory = 2GB
 request_disk = 500MB
 
 # Opt in to using CHTC GPU Lab resources
