@@ -20,7 +20,6 @@ transfer_input_files = main.py, MNIST_data.tar.gz
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
-
 # We require a machine with a modern version of the CUDA driver
 Requirements = (Target.CUDADriverVersion >= 10.1)
 
@@ -31,6 +30,12 @@ request_gpus = 1
 # select some memory and disk space
 request_memory = 1GB
 request_disk = 500MB
+
+# Opt in to using CHTC GPU Lab resources
++WantGPULab = true
+# Specify short job type to run more GPUs in parallel
+# Can also request "medium" or "long"
++GPUJobLength = "short"
 
 # Tell HTCondor to run 1 instances of our job:
 queue 1
