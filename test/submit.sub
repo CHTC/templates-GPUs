@@ -8,6 +8,9 @@ when_to_transfer_output = ON_EXIT
 requirements = (CUDACapability >= 4)
 request_gpus = 1
 
++WantGPULab = true
++GPUJobLength = "short"
+
 request_cpus = 1
 request_memory = 10MB
 request_disk = 10MB
