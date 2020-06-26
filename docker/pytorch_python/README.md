@@ -1,4 +1,3 @@
-
 ### Convolutional Neural Network with PyTorch (Python)
 This example shows how to send training and test data to the compute node along
 with the script. After processing the trained network is returned to the
@@ -13,9 +12,10 @@ We set the Docker image to version of Pytorch that is build with CUDA.
 docker_image = pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
 ```
 
-Also, we need the python script as well as the data transferred to the compute node. 
+Also, we need the Python script as well as the data transferred to the compute node. 
+These files are located in the [`shared/pytorch`](../../shared/pytorch) directory
 ```
-transfer_input_files = main.py, MNIST_data.tar.gz
+transfer_input_files = ../../shared/pytorch/main.py, ../../shared/pytorch/MNIST_data.tar.gz
 ```
 
 The rest of the submit file remains the same.  We run the submit file with 
@@ -25,7 +25,8 @@ condor_submit pytorch_cnn.sub
 
 ### Execute script
 The [Execute Shell script](./pytorch_cnn.sh) extracts the data and then calls a
-Python script [main.py](./main.py) that figures out the network weights and saves it to disk. Then the Execute script deletes the data directory so that it isn't returned to the submit node. 
+Python script [main.py](../../shared/pytorch/main.py) that figures out the network weights and saves it to disk.
+Then the Execute script deletes the data directory so that it isn't returned to the submit node. 
 
 ```shell
 tar zxf MNIST_data.tar.gz
@@ -44,5 +45,3 @@ Test set: Average loss: 0.0278, Accuracy: 9909/10000 (99%)
 
 You can see a complete list of files expected in the output in the [expected
 output directory](./expected_output/).
-
-

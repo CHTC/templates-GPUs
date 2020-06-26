@@ -15,7 +15,9 @@ executable = pytorch_cnn.sh
 arguments = $(Process)
 
 # take our python script to the compute node
-transfer_input_files = main.py, MNIST_data.tar.gz
+# the script and data are shared by multiple examples and located in a
+# different directory
+transfer_input_files = ../../shared/pytorch/main.py, ../../shared/pytorch/MNIST_data.tar.gz
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT

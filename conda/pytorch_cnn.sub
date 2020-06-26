@@ -2,7 +2,7 @@ universe = vanilla
 executable = pytorch_cnn.sh
 output = $(Cluster)_$(Process).out
 
-transfer_input_files = environment.yml, ../docker/pytorch_python/main.py, ../docker/pytorch_python/MNIST_data.tar.gz 
+transfer_input_files = environment.yml, ../shared/pytorch/main.py, ../shared/pytorch/MNIST_data.tar.gz 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
