@@ -28,5 +28,11 @@ request_gpus = 1
 request_memory = 2GB
 request_disk = 2GB
 
+# Opt in to using CHTC GPU Lab resources
++WantGPULab = true
+# Specify short job type to run more GPUs in parallel
+# Can also request "medium" or "long"
++GPUJobLength = "short"
+
 # Tell HTCondor to run 1 instances of our job:
 queue 1
