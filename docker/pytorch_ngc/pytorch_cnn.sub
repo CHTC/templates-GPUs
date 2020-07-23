@@ -1,9 +1,10 @@
-# pytorch test of convolutional neural network
+# PyTorch test of convolutional neural network
 # Submit file 
 
 # Must set the universe to Docker
 universe = docker
-docker_image = pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
+# Use the PyTorch container from the NVIDIA GPU Cloud (NGC)
+docker_image = nvcr.io/nvidia/pytorch:20.06-py3
 
 # set the log, error and output files 
 log = pytorch_cnn.log.txt
@@ -23,7 +24,7 @@ should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
 # We require a machine with a modern version of the CUDA driver
-Requirements = (Target.CUDADriverVersion >= 10.1)
+Requirements = (Target.CUDADriverVersion >= 11.0)
 
 # We must request 1 CPU in addition to 1 GPU
 request_cpus = 1
@@ -31,7 +32,7 @@ request_gpus = 1
 
 # select some memory and disk space
 request_memory = 3GB
-request_disk = 5GB
+request_disk = 15GB
 
 # Opt in to using CHTC GPU Lab resources
 +WantGPULab = true
