@@ -15,7 +15,9 @@ executable = pytorch_cnn.sh
 arguments = $(Process)
 
 # take our python script to the compute node
-transfer_input_files = main.py, MNIST_data.tar.gz
+# the script and data are shared by multiple examples and located in a
+# different directory
+transfer_input_files = ../../shared/pytorch/main.py, ../../shared/pytorch/MNIST_data.tar.gz
 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
@@ -29,7 +31,7 @@ request_gpus = 1
 
 # select some memory and disk space
 request_memory = 3GB
-request_disk = 500MB
+request_disk = 5GB
 
 # Opt in to using CHTC GPU Lab resources
 +WantGPULab = true
