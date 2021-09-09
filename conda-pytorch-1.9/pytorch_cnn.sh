@@ -13,7 +13,7 @@ tar zxf MNIST_data.tar.gz
 # Download a specific version of Miniconda instead of latest to improve
 # reproducibility
 export HOME=$PWD
-wget -q https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh -O miniconda.sh
+wget -q https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh -O miniconda.sh
 sh miniconda.sh -b -p $HOME/miniconda3
 rm miniconda.sh
 export PATH=$HOME/miniconda3/bin:$PATH

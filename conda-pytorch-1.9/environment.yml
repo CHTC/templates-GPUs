@@ -5,3 +5,4 @@ dependencies:
   - nvidia::cudatoolkit=11.1
   - python=3.9
   - pytorch::pytorch=1.9
+  - pytorch::torchvision=0.10
