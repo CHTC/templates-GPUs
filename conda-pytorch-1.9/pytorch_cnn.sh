@@ -31,5 +31,5 @@ conda activate pytorch-gpu
 conda list
 
 # Modify these lines to run your desired Python script
-python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
+python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'PyTorch CUDA version: {torch.version.cuda}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
 python main.py --save-model --epochs 20
