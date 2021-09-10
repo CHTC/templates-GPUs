@@ -6,8 +6,10 @@ transfer_input_files = environment.yml, ../../shared/pytorch/main.py, ../../shar
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
-# Run on an A100 GPU
-requirements = (CUDACapability == 8)
+# The conda environment will install cudatoolkit verison 11.1
+# This requirement ensures the execute node has a new enough driver to run it
+# Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
+requirements = (CUDADriverVersion >= 11.1)
 request_gpus = 1
 
 +WantGPULab = true

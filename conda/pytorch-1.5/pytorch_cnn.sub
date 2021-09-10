@@ -9,15 +9,17 @@ when_to_transfer_output = ON_EXIT
 # The conda environment will install cudatoolkit verison 10.2
 # This requirement ensures the execute node has a new enough driver to run it
 # Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
-requirements = (CUDADriverVersion >= 10.2)
+# The Ampere generation GPUS (e.g. A100) cannot run with CUDA 10.2 so add a
+# CUDACapability requirement to avoid running there
+requirements = (CUDADriverVersion >= 10.2) && (CUDACapability < 8)
 request_gpus = 1
 
 +WantGPULab = true
 +GPUJobLength = "short"
 
 request_cpus = 1
-request_memory = 4GB
-request_disk = 5GB
+request_memory = 10GB
+request_disk = 30GB
 
 log = $(Cluster)_$(Process).log
 error = $(Cluster)_$(Process).err
