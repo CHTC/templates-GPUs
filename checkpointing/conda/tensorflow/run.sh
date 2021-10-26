@@ -1,4 +1,4 @@
-#!/bin/bashY
+#!/bin/bash
 
 #If failure, exit with non-zero
 set -e
