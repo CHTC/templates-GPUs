@@ -4,7 +4,7 @@ log = checkpoint.log
 
 executable = run.sh
 
-checkpoint_exit_code = 10 #specify a non-zero exit code
+checkpoint_exit_code = 10 
 transfer_checkpoint_files = checkpoint.h5
 
 arguments = $(Process)
