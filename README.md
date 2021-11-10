@@ -4,7 +4,7 @@ Templates for submitting jobs to CHTC's high throughput compute (HTC) system tha
 
 General CHTC GPU guide here: [Jobs that use GPUs][gpu-guide]
 
-[gpu-guide]: http://chtc.cs.wisc.edu/uw-research-computing/gpu-jobs.shtml
+[gpu-guide]: https://chtc.cs.wisc.edu/uw-research-computing/gpu-jobs
 
 
 ## Licenses

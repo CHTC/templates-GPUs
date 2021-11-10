@@ -1,23 +1,25 @@
 universe = vanilla
-executable = pytorch_cnn.sh
+executable = ../../shared/pytorch/pytorch_conda_cnn.sh
 output = $(Cluster)_$(Process).out
 
-transfer_input_files = environment.yml, ../shared/pytorch/main.py, ../shared/pytorch/MNIST_data.tar.gz 
+transfer_input_files = environment.yml, ../../shared/pytorch/main.py, ../../shared/pytorch/MNIST_data.tar.gz 
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
 # The conda environment will install cudatoolkit verison 10.2
 # This requirement ensures the execute node has a new enough driver to run it
 # Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
-requirements = (CUDADriverVersion >= 10.2)
+# The Ampere generation GPUS (e.g. A100) cannot run with CUDA 10.2 so add a
+# CUDACapability requirement to avoid running there
+requirements = (CUDADriverVersion >= 10.2) && (CUDACapability < 8)
 request_gpus = 1
 
 +WantGPULab = true
 +GPUJobLength = "short"
 
 request_cpus = 1
-request_memory = 4GB
-request_disk = 5GB
+request_memory = 10GB
+request_disk = 30GB
 
 log = $(Cluster)_$(Process).log
 error = $(Cluster)_$(Process).err
