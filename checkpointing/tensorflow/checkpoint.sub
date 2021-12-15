@@ -16,7 +16,7 @@ when_to_transfer_output = ON_EXIT
 transfer_input_files = tf_checkpointing.py,http://proxy.chtc.wisc.edu/SQUID/gpu-examples/tf_checkpointing.tar.gz 
 
 
-requirements = (CUDADriverVersion >= 10.1)
+requirements = (CUDADriverVersion >= 11.1)
 
 request_cpus = 1
 request_gpus = 1
