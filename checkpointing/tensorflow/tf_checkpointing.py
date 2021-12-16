@@ -122,6 +122,7 @@ if chkpt_exists:
     model_filepath = "model/"
     model.save(model_filepath) ##Save the completed model
     subprocess.run(["tar", "czvf","model.tar.gz", model_filepath]) ##Zip the model file so it can be transferred back to the submit node
+    ##The python tarfile module is another python-based alternative to zipping the model file
     sys.exit(0) ##Exit with 0 to tell HTCondor we're done
 
 ##If no checkpoint exists, start from scratch
