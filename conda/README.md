@@ -1,7 +1,7 @@
 ## conda environment with GPU support
 
 The example uses Anaconda to create a Python environment with GPU support.
-Specifically, it downloads Miniconda, initializes conda, creates an environment from the `environment.yml` file, and runs a PyTorch example.
+Specifically, it downloads Miniconda, initializes conda, creates an environment from the `environment.yml` file, and runs a PyTorch example. For an example `environment.yml` file that builds a TensorFlow 2.6-compatible environment with GPU support, see the [`checkpointing/tensorflow`](../checkpointing/tensorflow) directory.
 The `environment.yml` file specifies which conda packages to install into the new environment.
 It also specifies that two of those packages should be obtained from the `pytorch` channel instead of the default channel.
 See the [CHTC conda guide](http://chtc.cs.wisc.edu/uw-research-computing/conda-installation.shtml) for more information about alternative ways to use conda in CHTC jobs.
