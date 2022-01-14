@@ -14,9 +14,9 @@ The five files include:
 
 ### Usage
 - Log into the HTC system.
-- Clone this repository: `git clone https://github.com/CHTC/template-GPUs`.
-- `cd` into this folder: `cd template-GPUs/checkpointing/tensorflow`
-- Because conda environments tend to be large, a Squid caching server is used to host the environment. You can access the environment `.tar.gz` file from the submit node at `/squid/gpu-examples`. For more information about using Squid, please review the CHTC guide:
+- Clone this repository: `git clone https://github.com/CHTC/templates-GPUs`.
+- `cd` into this folder: `cd templates-GPUs/checkpointing/tensorflow`
+- Because conda environments tend to be large, a Squid caching server is used to host the environment. You can view the environment `.tar.gz` file from the submit node at `/squid/gpu-examples`. For more information about using Squid, please review the CHTC guide:
 [Large File Availability Via Squid](https://chtc.cs.wisc.edu/uw-research-computing/file-avail-squid) guide.
 - Submit the sample job: `condor_submit checkpoint.sub`.
 - Upon completion, HTCondor will return a zipped model file, `model.tar.gz`, along with checkpoint files `checkpoint.h5` (checkpointed model) and `checkpoint.txt` (which epoch to resume training on).
