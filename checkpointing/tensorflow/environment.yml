@@ -1,0 +1,9 @@
+name: tf_checkpointing
+channels:
+  - conda-forge
+dependencies:
+  - cudatoolkit=11.1
+  - python=3.7
+  - tensorflow-gpu=2.6
+  - keras
+  - tensorflow-datasets

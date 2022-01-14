@@ -1,0 +1,29 @@
+
+universe = vanilla
+log = checkpoint.log
+
+executable = run.sh
+
+# indicate which exit code should trigger the job to continue running after checkpointing
+checkpoint_exit_code = 85 
+# indicate which checkpointing files should be preserved to facilitate restarts in the case of interruption
+transfer_checkpoint_files = checkpoint.h5, checkpoint.txt 
+
+output = out.out
+error = err.err
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = tf_checkpointing.py,http://proxy.chtc.wisc.edu/SQUID/gpu-examples/tf_checkpointing.tar.gz 
+
+requirements = (CUDADriverVersion >= 11.1)
+
+request_cpus = 1
+request_gpus = 1
+request_memory = 4GB
+request_disk = 4000MB
+
++WantGPULab = true
++GPUJobLength = "short"
+
+queue 1
