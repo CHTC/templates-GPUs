@@ -13,14 +13,10 @@ tar zxf MNIST_data.tar.gz
 # Download a specific version of Miniconda instead of latest to improve
 # reproducibility
 export HOME=$PWD
-wget -q https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.2-Linux-x86_64.sh -O miniconda.sh
+wget -q https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh -O miniconda.sh
 sh miniconda.sh -b -p $HOME/miniconda3
 rm miniconda.sh
 export PATH=$HOME/miniconda3/bin:$PATH
-
-# Update conda as workaround for https://github.com/conda/conda/issues/9681
-# Will no longer be needed once conda >= 4.8.3 is available from repo.anaconda.com
-conda install conda=4.8.3
 
 # Set up conda
 source $HOME/miniconda3/etc/profile.d/conda.sh
@@ -35,6 +31,5 @@ conda activate pytorch-gpu
 conda list
 
 # Modify these lines to run your desired Python script
-python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
+python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'PyTorch CUDA version: {torch.version.cuda}'); print(f'CUDA device: {torch.cuda.get_device_name(0)}')"
 python main.py --save-model --epochs 20
-

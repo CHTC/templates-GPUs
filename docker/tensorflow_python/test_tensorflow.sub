@@ -20,8 +20,10 @@ transfer_input_files = test_tensorflow.py
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
-# We require a machine with a modern version of the CUDA driver
-Requirements = (Target.CUDADriverVersion >= 10.1)
+# We require a machine that can support the version of the CUDA driver used in the Docker image
+# The Ampere generation GPUS (e.g. A100) cannot run with CUDA 10.1 so add a
+# CUDACapability requirement to avoid running there
+Requirements = (Target.CUDADriverVersion >= 10.1) && (CUDACapability < 8)
 
 # We must request 1 CPU in addition to 1 GPU
 request_cpus = 1
