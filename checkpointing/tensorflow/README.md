@@ -3,7 +3,7 @@ The example uses a pre-configured conda environment to demonstrate how one might
 
 The Tensorflow example downloads the MNIST dataset and trains a neural net on it for 20 epochs, making a "checkpoint" every fifth epoch. In the event of a runtime interruption, these checkpoints are preserved on the submit server and are used to resume training, preventing the loss of already-completed work.
 
-Checkpointing can be useful when running jobs that take multiple days to train or when training on resources that may be interrupted, like OSG GPUs.
+Checkpointing can be useful when running jobs that take multiple days to train or when training on resources that may be interrupted, like GPUs on CHTC backfill servers, campus pools outside of CHTC, or the Open Science Grid. These additional GPU resources can be accessed by adding the `Is_resumable = true`, `wantFlocking = true`, and `wantGlideIn = true` options, respectively, to your submit file.
 
 The five files include:
 - `checkpoint.sub` ## used to submit the job on HTCondor.
