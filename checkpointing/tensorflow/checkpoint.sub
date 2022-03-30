@@ -23,6 +23,8 @@ request_gpus = 1
 request_memory = 4GB
 request_disk = 4000MB
 
+# Uncomment following line to access CHTC backfill servers, where checkpointing is especially useful.
+#+Is_Resumable = true
 +WantGPULab = true
 +GPUJobLength = "short"
 
