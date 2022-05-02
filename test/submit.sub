@@ -5,7 +5,7 @@ output = $(Cluster)_$(Process).out
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
-requirements = (CUDACapability >= 4)
+requirements = (GPUs_Capability >= 4)
 request_gpus = 1
 
 +WantGPULab = true

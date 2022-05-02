@@ -24,7 +24,7 @@ should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
 # We require a machine with a modern version of the CUDA driver
-Requirements = (Target.CUDADriverVersion >= 10.1)
+Requirements = (Target.GPUs_DriverVersion >= 10.1)
 
 # We must request 1 CPU in addition to 1 GPU
 request_cpus = 1

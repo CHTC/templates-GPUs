@@ -11,7 +11,7 @@ when_to_transfer_output = ON_EXIT
 # Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
 # The Ampere generation GPUS (e.g. A100) cannot run with CUDA 10.2 so add a
 # CUDACapability requirement to avoid running there
-requirements = (CUDADriverVersion >= 10.2) && (CUDACapability < 8)
+requirements = (GPUs_DriverVersion >= 10.2) && (GPUs_Capability < 8)
 request_gpus = 1
 
 +WantGPULab = true
