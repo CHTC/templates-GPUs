@@ -1,0 +1,24 @@
+universe = vanilla
+
+log = job_1.log
+#
+executable = run.sh
+
+output = out_1.out
+error = err_1.err
+#
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/gpu-examples/Miniconda3-latest-Linux-x86_64.sh,../env.yml,model.py, run.sh
+
+
+requirements = (CUDACapability == 7.5)&&(11.1 <= Target.CUDADriverVersion)
+request_cpus = 1
+request_gpus = 1
+request_memory = 16GB
+request_disk = 40GB
+
++WantGPULab = true
++GPUJobLength = "short"
+
+queue 1
