@@ -31,7 +31,7 @@ The directories called ```two``` and ```four``` demonstrate models implemented t
 
 To run either job in CHTC, run ```condor_submit [submit_file].sub``` from your terminal, where ```[submit_file].sub``` is the name of the submit file in the directory. This will add the job to the queue.
 
-Upon completion of the job, three additional files will be generated, similar to the single GPU example. These include a job log with ```.log``` extension, an error file with ```.err``` extension, an output file with ```.out``` extension, and the model checkpoints with ```.pth``` extension.
+Upon completion of the job, additional files will be generated, similar to the single GPU example. These include a job log with ```.log``` extension, an error file with ```.err``` extension, an output file with ```.out``` extension, and the model checkpoints with ```.pth``` extension.
 
 To compare model training times, compare the times listed in the output files. The two/four GPU jobs should take more time than the single GPU job, as this example demonstrates an inefficient approach to parallelization. 
 
