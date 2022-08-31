@@ -1,7 +1,13 @@
 # Multi-GPU training example
 
-This example uses a CNN implemented in PyTorch to demonstrate how one might parallelize model training across several GPUs on a single node. Note that this is a different problem than  spreading the model across multiple GPUs, as might be required when training very large models that cannot fit in the memory of a single GPU. Moreover, this example demonstrates that multi-GPU training does not necessarily lead to speedups in training, and some thought should be given to whether a model will benefit from parallel training, as well as how that parallelism is implemented. 
+This example uses a PyTorch CNN adapted from https://github.com/jamespengcheng/PyTorch-CNN-on-CIFAR10/blob/master/ConvNetClassifier.py to demonstrate how one might parallelize model training across several GPUs on a single node. 
 
+Note that this is a different problem than  spreading the model across multiple GPUs, as might be required when training very large models that cannot fit in the memory of a single GPU. 
+
+Moreover, this example demonstrates that multi-GPU training does not necessarily lead to speedups in training, and some thought should be given to whether a model will benefit from parallel training, as well as how that parallelism is implemented. 
+
+Several files contain commented code related to the machine learning resource Weights & Biases. This tool was used to profile the GPUs used during the runtime of this example, but is not officially endorsed by CHTC.
+ 
 ## Single GPU Training
 
 The directory called ```one``` demonstrates a model implemented to train on a single node, single GPU. To run this example, navigate into the directory using ```cd one/```. There should be three files:

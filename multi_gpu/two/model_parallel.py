@@ -47,32 +47,23 @@ class ConvNet(nn.Module):
     def __init__(self):
         super(ConvNet, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=48, kernel_size=(3,3), padding=(1,1))
-        self.conv1 = nn.DataParallel(self.conv1)
         self.conv2 = nn.Conv2d(in_channels=48, out_channels=96, kernel_size=(3,3), padding=(1,1))
-        self.conv2 = nn.DataParallel(self.conv2)
 
         self.conv3 = nn.Conv2d(in_channels=96, out_channels=192, kernel_size=(3,3), padding=(1,1))
-        self.conv3 = nn.DataParallel(self.conv3)
 
         self.conv4 = nn.Conv2d(in_channels=192, out_channels=256, kernel_size=(3,3), padding=(1,1))
-        self.conv4 = nn.DataParallel(self.conv4)
         
         self.conv5 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=(3,3), padding=(1,1))
-        self.conv5 = nn.DataParallel(self.conv5)        
 
         self.conv6 = nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=(3,3), padding=(1,1))
-        self.conv6 = nn.DataParallel(self.conv6)
 
         self.pool = nn.MaxPool2d(2,2)
         self.fc1 = nn.Linear(in_features=8*8*1024, out_features=2048)
-        self.fc1 = nn.DataParallel(self.fc1)
 
         self.fc2 = nn.Linear(in_features=2048, out_features=64)
-        self.fc2 = nn.DataParallel(self.fc2)
 
         self.Dropout = nn.Dropout(0.25)
         self.fc3 = nn.Linear(in_features=64, out_features=10)
-        self.fc3 = nn.DataParallel(self.fc3)
 
     def forward(self, x):
         x = F.relu(self.conv1(x)) #32*32*48
@@ -120,6 +111,7 @@ def save_model(net, epoch):
 #Depend on whether we need to load the pretrained model
 
 net = ConvNet()
+net = nn.DataParallel(net, device_ids=[0,1])
 net.cuda()
 #optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=0.9)
 
