@@ -1,0 +1,26 @@
+universe = vanilla
+
+log = job_$(Cluster)_$(Process).log
+#
+executable = run_parallel.sh
+
+output = out_$(Cluster)_$(Process).out
+error = err_$(Cluster)_$(Process).err
+#
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/gpu-examples/Miniconda3-latest-Linux-x86_64.sh, env.yml, model_parallel.py
+
+
+require_gpus = (Capability == 7.5) && (11.1 <= DriverVersion)
+request_cpus = 1
+
+# Edit how many GPUs are requested on the next line
+request_gpus = 2
+request_memory = 16GB
+request_disk = 40GB
+
++WantGPULab = true
++GPUJobLength = "short"
+
+queue 1
