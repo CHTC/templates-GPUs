@@ -1,5 +1,5 @@
 ####################
-"""Model Adapted from https://github.com/jamespengcheng/PyTorch-CNN-on-CIFAR10/blob/master/ConvNetClassifier.py"""
+"""Model adapted from https://github.com/jamespengcheng/PyTorch-CNN-on-CIFAR10/blob/master/ConvNetClassifier.py"""
 ####################
 
 
@@ -18,7 +18,7 @@ import argparse
 
 
 #import wandb
-#wandb.init(project="TWO")
+#wandb.init(project="multigpu")
 
 
 # Configuration area
@@ -106,7 +106,7 @@ class ConvNet(nn.Module):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Running jobs with 1,2 or 4 GPUs")
+    parser = argparse.ArgumentParser(description="Running jobs with multiple GPUs")
 
     parser.add_argument(
         '--num_gpus',
@@ -189,3 +189,4 @@ def train(gpu, args):
 
 if __name__=="__main__":
     main()
+
