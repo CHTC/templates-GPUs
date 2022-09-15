@@ -22,6 +22,8 @@ request_gpus = 1
 request_memory = 16GB
 request_disk = 40GB
 
+requirements = (OpSysMajorVer==7 || OpSysMajorVer==8)
+
 +WantGPULab = true
 +GPUJobLength = "short"
 
