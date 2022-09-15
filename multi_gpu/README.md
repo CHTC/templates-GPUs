@@ -29,7 +29,7 @@ While 4 GPUs is theoretically possible on a single node, requesting 4 GPUs may r
 Two files need to be updated to reflect this choice:
 
 - ```submit.sub``` -- line 21 
-- ```run_parallel.sh``` -- line 18 
+- ```run_parallel.sh``` -- line 20 
 
 After these files are updated, to submit the job run ```condor_submit submit.sub``` from your terminal.
 This will add the job to the queue.
