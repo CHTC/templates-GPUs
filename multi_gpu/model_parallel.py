@@ -1,5 +1,8 @@
 ####################
-"""Model adapted from https://github.com/jamespengcheng/PyTorch-CNN-on-CIFAR10/blob/master/ConvNetClassifier.py"""
+"""
+Model adapted from https://github.com/jamespengcheng/PyTorch-CNN-on-CIFAR10/blob/master/ConvNetClassifier.py
+Distributed Data Parallel training adapted from https://medium.com/analytics-vidhya/distributed-training-in-pytorch-part-1-distributed-data-parallel-ae5c645e74cb
+"""
 ####################
 
 
