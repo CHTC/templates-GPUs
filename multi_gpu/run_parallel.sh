@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+NUMGPUS=$1
+
 # installation steps for Miniconda
 export HOME=$PWD
 sh Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
@@ -16,6 +18,5 @@ conda activate multigpu
 
 #wandb login <your api key>
 
-# Edit the argument after -n to reflect how many GPUs were requested in the submit file
-python3 model_parallel.py -n 1
+python3 model_parallel.py -n $NUMGPUS
 

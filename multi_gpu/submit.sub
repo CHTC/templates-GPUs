@@ -3,6 +3,7 @@ universe = vanilla
 log = job_$(Cluster)_$(Process).log
 
 executable = run_parallel.sh
+arguments = $(request_gpus)
 
 output = out_$(Cluster)_$(Process).out
 error = err_$(Cluster)_$(Process).err
