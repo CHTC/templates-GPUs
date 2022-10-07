@@ -143,7 +143,6 @@ def train(gpu, args):
     net = ConvNet()
     torch.cuda.set_device(gpu)
     net.cuda(gpu)
-    batch_size=128
     criterion = nn.CrossEntropyLoss()
 
     net = nn.parallel.DistributedDataParallel(net, device_ids=[gpu])
