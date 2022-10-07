@@ -1,0 +1,10 @@
+#################
+#Files to ignore
+#################
+
+*.txt
+_*
+out*
+err*
+job*
+model_with*
