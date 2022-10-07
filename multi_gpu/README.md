@@ -30,7 +30,7 @@ One file needs to be updated to reflect this choice:
 
 - ```submit.sub``` -- line 21 
 
-After these files are updated, to submit the job run ```condor_submit submit.sub``` from your terminal.
+After this file is updated, to submit the job run ```condor_submit submit.sub``` from your terminal.
 This will add the job to the queue.
 
 When the job finishes, the job, err, out, and model checkpoint files will return to the submit node.
