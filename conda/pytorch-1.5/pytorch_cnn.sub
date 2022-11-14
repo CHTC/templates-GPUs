@@ -21,6 +21,9 @@ request_cpus = 1
 request_memory = 10GB
 request_disk = 30GB
 
+# Commented to illustrate why a job may fail to run
+# requirements = (OpSysMajorVer == 7) || (OpSysMajorVer == 8)
+
 log = $(Cluster)_$(Process).log
 error = $(Cluster)_$(Process).err
 
