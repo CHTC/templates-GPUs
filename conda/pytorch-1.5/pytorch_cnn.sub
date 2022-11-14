@@ -11,7 +11,7 @@ when_to_transfer_output = ON_EXIT
 # Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
 # The Ampere generation GPUS (e.g. A100) cannot run with CUDA 10.2 so add a
 # CUDACapability requirement to avoid running there
-requirements = (CUDADriverVersion >= 10.2) && (CUDACapability < 8)
+require_gpus = (DriverVersion >= 10.2) && (Capability < 8)
 request_gpus = 1
 
 +WantGPULab = true
@@ -20,6 +20,9 @@ request_gpus = 1
 request_cpus = 1
 request_memory = 10GB
 request_disk = 30GB
+
+# Commented to illustrate why a job may fail to run
+# requirements = (OpSysMajorVer == 7) || (OpSysMajorVer == 8)
 
 log = $(Cluster)_$(Process).log
 error = $(Cluster)_$(Process).err
