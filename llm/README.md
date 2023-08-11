@@ -1,63 +1,71 @@
-# Personal CHTC submit template for LLM fine-tuning
+# Personal CHTC Submit Template for LLM Fine-Tuning
 
-Use case: Fine-tuning Large language models on CHTC.
+Use Case: Fine-tuning large language models on CHTC and track it with `Weights & Biases`.
 
-## Used stacks
+![WANDB](wandb.png)
+
+## Quick start
+
+1. Store your WANDB credentials and `STAGING_DIR` path in an environment file named .env. See the provided [example](.env.example).
+1. Update the `run_name` in `run.sh`. This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/run_name/`.
+1. Modify `run.sub` as necessary.
+1. SSH to the submit node.
+1. Create a `condor_log` directory using the command: `mkdir condor_log` if you don't have it.
+1. Submit your job using `condor_submit run.sub`.
+
+## Used Stacks
 
 - Docker
-- Github container registry (ghcr.io)
+- Github Container Registry (ghcr.io)
 - Huggingface Transformers
-- Weight & Biases (WANDB)
+- Weights & Biases (WANDB)
 
-## Used CHTC/HTCondor features
+## Used CHTC/HTCondor Features
 
-- Docker universe
+- Docker Universe
 - Checkpointing
 - Staging (for storing checkpoints)
 - GPU
 
-## Building a container
+## Building your own container
 
-Example source for building a training container:
+Note: Perform this step on your local machine, not on a CHTC submit node.
+
+Example resources for building a training container:
 
 - [Dockerfile](Dockerfile)
 - [requirements.txt](requirements.txt)
 - [Helper script](build.sh)
 - [.env](.env.example) for Github container registry credentials (`CR_PAT`)
 
-User probably should build their own container to suit their needs.
+Users should consider building their own container to match their specific needs.
 
-Example container image
+Example Container Image:
 
 - [Link](ghcr.io/jasonlo/chtc_condor:latest)
 
-## Quick start
-
-1. Put your WANDB credentials and staging_dir path in a environment file: `.env`, see [example](.env.example)
-1. Update your training script: `train.py`
-1. Update `run_name` in `run.sh`, it will be used as wandb tracking id, and checkpoints will be created in `staging_dir/run_name`
-1. Update `run.sub` if needed
-1. SSH to submit node
-1. Submit your job with `condor_submit run.sub`
-
 ## FAQ
 
-1. Why not running `python run.py` directly in `run.sub`?
+1. Why shouldn't I run python run.py directly in run.sub?
 
-> I need to export HuggingFace cache dir to `_CONDOR_SCRATCH_DIR` to global scope, I don't know an easy way to do it in `python`. Let me know if you know how to do it.
+> I need to export the HuggingFace cache directory to _CONDOR_SCRATCH_DIR in a global scope. I'm unaware of a simple method to do this in python. Please let me know if you have a solution.
 
-1. Why `+GPUJobLength = "short"` in `run.sub`?
+1. Why is `+GPUJobLength = "short"` present in `run.sub`?
 
-> Queueing time for `long` is too long, and we checkpoint anyway, so it is better to use `short`.
+> The queuing duration for `long` is excessive, and since we perform checkpointing, it's more efficient to use `short`.
 
-1. Can I use more GPUs?
+1. Can I use additional GPUs?
 
-> Yes, just change `request_gpus` in `run.sub` to the number you want.
+> Absolutely! Just modify the `request_gpus` value in `run.sub` to your desired number.
 
-## TODOs
+## To-Do List
 
-- [ ] Somehow put all configs in one place? Now it is scattered in `.env`, `run.sh`, `run.sub`
-- [ ] Add `wandb` hyperparameter sweep support
-- [ ] Add `DeepSpeed` support
-- [ ] Put docker image in staging? Will it be faster? Or even possible?
-- [ ] Experiment with training optimized container like: [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
+- Consolidate all configurations into a single location? They are currently dispersed across `.env`, `run.sh`, and `run.sub`.
+- Implement `wandb` hyperparameter `sweep` functionality.
+- Integrate `DeepSpeed` support.
+- Is it feasible or quicker to store the Docker image in `staging`?
+- Experiment with a training-optimized container, such as [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch).
+
+## About Me
+
+I am a data scientist at [DSI](https://datascience.wisc.edu/staff/lo-jason/).
