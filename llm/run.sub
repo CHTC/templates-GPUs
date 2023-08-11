@@ -1,0 +1,37 @@
+JobBatchName            = "LLM training template"
+
+universe                = docker
+docker_image            = ghcr.io/jasonlo/chtc_condor:latest
+docker_network_type     = host
+
+# Artefact
+Requirements            = (Target.HasCHTCStaging == true)
+executable              = run.sh
+transfer_input_files    = train.py, .env
+should_transfer_files   = YES
+
+# Checkpoint
+checkpoint_exit_code    = 85
++is_resumable           = true
+
+# Logging
+stream_output           = true
+output                  = condor_log/output.$(Cluster)-$(Process).txt
+error                   = condor_log/error.$(Cluster)-$(Process).txt
+log                     = condor_log/log.$(Cluster)-$(Process).txt
+
+# Compute resources
+request_cpus            = 2
+request_memory          = 8GB
+request_disk            = 100GB
+
+# Extra GPU settings
+request_gpus            = 2
+Requirements            = (Target.CUDADriverVersion >= 10.1)
++WantGPULab             = true
++WantFlocking           = true
++WantGlidein            = true
++GPUJobLength           = "short"
+
+# Runs
+queue 1
