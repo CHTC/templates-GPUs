@@ -1,2 +1,2 @@
-python-dotenv
-wandb
+python-dotenv==1.0.0
+wandb==0.15.8

@@ -1,12 +1,12 @@
 # Personal CHTC Submit Template for LLM Fine-Tuning
 
-Use Case: Fine-tuning large language models on CHTC and track it with `Weights & Biases`.
+Use Case: Fine-tune large language models on CHTC and optionally monitor the process with Weights & Biases. This example is based on the example provided at [Hugging Face Documentation](https://huggingface.co/docs/transformers/training)
 
 ![WANDB](wandb.png)
 
 ## Quick start
 
-1. Store your WANDB credentials and `STAGING_DIR` path in an environment file named .env. See the provided [example](.env.example).
+1. Make a .env file, see the provided [example](.env.example) for further instructions.
 1. Update the `run_name` in `run.sh`. This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/run_name/`.
 1. Modify `run.sub` as necessary.
 1. SSH to the submit node.
@@ -56,9 +56,9 @@ Example Container Image:
 
 1. Can I use additional GPUs?
 
-> Absolutely! Just modify the `request_gpus` value in `run.sub` to your desired number.
+> Absolutely! Just modify the `request_gpus` value in `run.sub` to your desired number. HuggingFace's [trainer](https://huggingface.co/docs/transformers/main_classes/trainer) will then automatically use all available GPUs.
 
-## To-Do List
+## To-Do list
 
 - Consolidate all configurations into a single location? They are currently dispersed across `.env`, `run.sh`, and `run.sub`.
 - Implement `wandb` hyperparameter `sweep` functionality.
@@ -66,6 +66,10 @@ Example Container Image:
 - Is it feasible or quicker to store the Docker image in `staging`?
 - Experiment with a training-optimized container, such as [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch).
 
-## About Me
+## Disclaimer 
 
-I am a data scientist at [DSI](https://datascience.wisc.edu/staff/lo-jason/).
+Please note that while Weights & Biases is a popular third-party service for logging and visualizing model training, it is not officially supported by CHTC. Though included in this example, its use does not constitute an official endorsement, and users must troubleshoot any W&B issues independently.
+
+## About the author
+
+Contributed by [Jason from Data Science Institute, UW-Madison](https://datascience.wisc.edu/staff/lo-jason/).
