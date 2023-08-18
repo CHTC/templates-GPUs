@@ -8,10 +8,28 @@ Use Case: Fine-tune large language models on CHTC and optionally monitor the pro
 
 1. Make a .env file, see the provided [example](.env.example) for further instructions.
 1. Update the `run_name` in `run.sh`. This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/run_name/`.
+1. (Optional) Build your own training container, see details below.
 1. Modify `run.sub` as necessary.
 1. SSH to the submit node.
 1. Create a `condor_log` directory using the command: `mkdir condor_log` if you don't have it.
 1. Submit your job using `condor_submit run.sub`.
+
+## Building your own container (Optional)
+
+Note: Perform this step on your local machine, not on a CHTC submit node.
+
+Example resources for building a training container:
+
+- [Dockerfile](Dockerfile)
+- [requirements.txt](requirements.txt)
+- [Helper script](build_push_container.sh)
+- [.env](.env.example)
+
+Users should consider building their own container to match their specific needs.
+
+Example Container Image:
+
+- [Link](https://github.com/users/jasonlo/packages/container/package/chtc_condor)
 
 ## Used Stacks
 
@@ -26,23 +44,6 @@ Use Case: Fine-tune large language models on CHTC and optionally monitor the pro
 - Checkpointing
 - Staging (for storing checkpoints)
 - GPU
-
-## Building your own container
-
-Note: Perform this step on your local machine, not on a CHTC submit node.
-
-Example resources for building a training container:
-
-- [Dockerfile](Dockerfile)
-- [requirements.txt](requirements.txt)
-- [Helper script](build.sh)
-- [.env](.env.example) for Github container registry credentials (`CR_PAT`)
-
-Users should consider building their own container to match their specific needs.
-
-Example Container Image:
-
-- [Link](ghcr.io/jasonlo/chtc_condor:latest)
 
 ## FAQ
 
