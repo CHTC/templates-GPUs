@@ -5,8 +5,5 @@ source .env
 echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 
 # Build and push
-# Update github_user_name and container_name
-# docker build -t ghcr.io/github_user_name/container_name:latest .
-# docker push ghcr.io/github_user_name/container_name:latest
 docker build -t ghcr.io/$GH_USERNAME/$GH_CONTAINER_NAME:latest .
 docker push ghcr.io/$GH_USERNAME/$GH_CONTAINER_NAME:latest

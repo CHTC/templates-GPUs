@@ -9,4 +9,5 @@ export HF_MODULES_CACHE=$_CONDOR_SCRATCH_DIR/modules
 export HF_METRICS_CACHE=$_CONDOR_SCRATCH_DIR/metrics
 
 # Update your run name here
-python3 train.py demo_run -w
+# You can remove the --use_wandb flag if tracking is not needed.
+python3 train.py demo_run --use_wandb
