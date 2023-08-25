@@ -53,7 +53,7 @@ Example Container Image:
 
 1. Why is `+GPUJobLength = "short"` present in `run.sub`?
 
-> The queuing duration for `long` is excessive, and since we perform checkpointing, it's more efficient to use `short`.
+> The queuing duration for `long` is excessive, and since we perform checkpointing, it's more efficient to use `short`. CHTC [policy](https://chtc.cs.wisc.edu/uw-research-computing/gpu-jobs) also allows users to run far more simultaneous `short` jobs than `long` jobs.
 
 1. Can I use additional GPUs?
 
