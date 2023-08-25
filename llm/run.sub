@@ -1,4 +1,6 @@
 JobBatchName            = "LLM training template"
+# Update your run name here
+arguments               = "demo_run"
 
 universe                = docker
 docker_image            = ghcr.io/jasonlo/chtc_condor:latest
