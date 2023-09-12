@@ -6,8 +6,8 @@ Use Case: Fine-tune large language models on CHTC and optionally monitor the pro
 
 ## Quick start
 
-1. Store your WANDB credentials and `STAGING_DIR` path in an environment file named .env. See the provided [example](.env.example).
-1. Update the `run_name` in `run.sh`. This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/run_name/`.
+1. Store your WANDB credentials and `STAGING_DIR` path in an environment file named .env. See the provided [example](.env.example). (If you do not have a CHTC `/staging` directory, contact the facilitation team at chtc@cs.wisc.edu, as described [here](https://chtc.cs.wisc.edu/uw-research-computing/file-avail-largedata)). 
+1. Update the `run_name` in the submit file. This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/run_name/`.
 1. (Optional) Build your own training container, see details below.
 1. Modify `run.sub` as necessary.
 1. SSH to the submit node.

@@ -1,6 +1,6 @@
 JobBatchName            = "LLM training template"
-# Update your run name here
-arguments               = "demo_run"
+# Update your run name here and whether to use wandb
+arguments               = demo_run --use_wandb
 
 universe                = docker
 docker_image            = ghcr.io/jasonlo/chtc_condor:latest
@@ -31,8 +31,9 @@ request_disk            = 100GB
 request_gpus            = 2
 Requirements            = (Target.CUDADriverVersion >= 10.1)
 +WantGPULab             = true
-+WantFlocking           = true
-+WantGlidein            = true
+# change to true if *not* using staging for checkpoints and interested in accessing GPUs beyond CHTC
++WantFlocking           = false
++WantGlidein            = false
 +GPUJobLength           = "short"
 
 # Runs
