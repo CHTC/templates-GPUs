@@ -1,2 +1,3 @@
 .vscode
 llm/.env
+llm/condor_log/*.txt

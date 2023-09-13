@@ -22,7 +22,10 @@ def train(run_name: str, use_wandb: bool = False):
     RESULTS_DIR = STAGING_DIR / "results" / run_name
 
     if use_wandb:
+        print("Using wandb for logging.")
         wandb.init(name=run_name, id=run_name, resume="allow")
+    else:
+        print("Not using wandb for logging.")
 
     # Main training section
     dataset = load_dataset("yelp_review_full")
@@ -44,7 +47,7 @@ def train(run_name: str, use_wandb: bool = False):
         output_dir=RESULTS_DIR,
         evaluation_strategy="steps",
         num_train_epochs=1,
-        report_to="wandb" if use_wandb else None,
+        report_to="wandb" if use_wandb else "none",
         save_strategy="steps",
         save_total_limit=3,
         # deepspeed="deepspeed_config.json",
@@ -60,7 +63,8 @@ def train(run_name: str, use_wandb: bool = False):
     last_checkpoint = get_last_checkpoint(training_args.output_dir)
     trainer.train(resume_from_checkpoint=last_checkpoint)
 
-    wandb.finish()
+    if use_wandb:
+        wandb.finish()
 
 
 def main():
