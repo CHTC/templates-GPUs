@@ -7,7 +7,7 @@ Use Case: Fine-tune large language models on CHTC and optionally monitor the pro
 ## Quick start
 
 1. Store your WANDB credentials and `STAGING_DIR` path in an environment file named .env. See the provided [example](.env.example). (If you do not have a CHTC `/staging` directory, contact the facilitation team at chtc@cs.wisc.edu, as described [here](https://chtc.cs.wisc.edu/uw-research-computing/file-avail-largedata)). 
-1. Update the `run_name` in the submit file (in the `arguments = ` line). This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/run_name/`.
+1. Update the `run_name` in the submit file (in the `arguments = ` line). This will be utilized as the WANDB tracking ID, and checkpoints will be saved in `STAGING_DIR/results/run_name/`.
 1. (Optional) Build your own training container, see details below.
 1. Modify `run.sub` as necessary.
 1. Create a `condor_log` directory using the command: `mkdir condor_log` if you don't have it.
@@ -57,6 +57,10 @@ Example Container Image:
 1. Can I use additional GPUs?
 
 > Absolutely! Just modify the `request_gpus` value in `run.sub` to your desired number. HuggingFace's [trainer](https://huggingface.co/docs/transformers/main_classes/trainer) will then automatically use all available GPUs.
+
+1. How long does the model train?
+
+> This example trains for a single epoch. In a research setting, you would modify the fine-tuning to train for more epochs or until training converges.
 
 ## To-Do list
 
