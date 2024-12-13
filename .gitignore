@@ -1,3 +1,5 @@
 .vscode
 llm/.env
 llm/condor_log/*.txt
+.devcontainer
+vllm_batch_inference/.env
