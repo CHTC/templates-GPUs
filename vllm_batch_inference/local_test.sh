@@ -1,7 +1,7 @@
 #!/bin/bash
 
-docker run --rm --runtime nvidia --gpus all \
+docker run --rm -it --gpus all \
  	--env-file .env \
     --ipc=host \
+	--entrypoint /bin/bash \
 	vllm/vllm-openai:v0.6.4 \
-	--model microsoft/Phi-3.5-mini-instruct
