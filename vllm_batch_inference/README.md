@@ -14,19 +14,20 @@ Below is an example workflow demonstrating how to set up, package, submit, and r
 
 ## Step-by-step guide
 
-1. 
-
-
 ## FAQ
 
 1. How to find supported open source model?
 
-    Go to [Huggingface's model](https://huggingface.co/models), pick one, you can check if it supports vllm by clicking `use this model` ![hugging face vllm](img/hf-vllm.png)
+    Go to [Huggingface's model](https://huggingface.co/models), pick one, you can check if it supports vllm by clicking `use this model` ![hugging face vllm](img/hf-vllm.png). Please read the model instruction as some model requires approval or signing an user agreement.
 
-1. Why you use vllm instead of Ollama?
+1. Why vllm?
 
-    Currently, vllm has higher throughput. I think Ollama is better suited in small amount of real time inference.
+    Currently, vllm has the higher throughput that I know of for batch offline inference.
 
 1. Does this example allow multiple parallel jobs?
 
-    Since I want to keep things relatively simple, I used `SQLite` in this example. However, it is not really design for too many concurrent write. You probably should use a proper database like `PostgreSQL` if you are running into database bottleneck issue.
+    Since I want to keep things relatively simple, I used a `JSONL` file to store the results in this example. However, it is not really design for too many concurrent write. You probably should use a proper database like `PostgreSQL` if you are running into write file issue.
+
+## About the author
+
+Contributed by [Jason from Data Science Institute, UW-Madison](https://github.com/jasonlo).
