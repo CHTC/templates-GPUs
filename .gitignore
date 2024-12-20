@@ -4,3 +4,4 @@ llm/.env
 .devcontainer
 vllm_batch_inference/.env
 .venv
+vllm_batch_inference/outputs.jsonl

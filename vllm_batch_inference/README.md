@@ -1,33 +1,43 @@
 # vLLM Batch Inference on CHTC
 
-Below is an example workflow demonstrating how to set up, package, submit, and run batch open source LLM inference jobs using `vllm` on CHTC via HTCondor. This is useful for:
+This guide demonstrates how to set up, submit, and run batch open-source LLM inference jobs using `vllm` on CHTC via `HTCondor`. This is useful for:
 
 - Generating large volumes of synthetic data using open-source LLMs.
 - Conducting large-scale, structured data extraction from text.
 - Embedding large volumes of text.
-- Running any LLM-driven tasks cost-effectively at massive scale, without relying on expensive commercial alternatives.
+- Running any LLM-driven tasks cost-effectively at a massive scale, without relying on expensive commercial alternatives.
 
 ## Prerequisites
 
-- You already know the basics on CHTC, HTCondor, Docker universe job.
+- Basic knowledge of CHTC, HTCondor, and Docker universe jobs.
 
-## Step-by-step guide
+## Introduction
 
-1. Go to [huggingface](https://huggingface.co/settings/tokens) and get a token. You need it for downloading open source models.
-1. `ssh` to a submit node
-1. Make a `.env` file based on this [example](.env.example)
-1. `condor submit job.sub`
+In this example, we will use the [Phi-3.5-mini-instruct](https://huggingface.co/microsoft/Phi-3.5-mini-instruct) model with [vLLM v0.6.4 offline inference](https://docs.vllm.ai/en/v0.6.4/getting_started/examples/offline_inference.html) to process 100 [example inputs](inputs.jsonl). The results will be written to `outputs.jsonl` and transferred back to the submit node using the `transfer_output_files` feature in `HTCondor`.
+
+## Step-by-Step Guide
+
+1. Visit [Hugging Face](https://huggingface.co/settings/tokens) and obtain a token for downloading open-source models.
+2. `ssh` into a CHTC submit node.
+3. Clone this repository: `git clone https://github.com/CHTC/templates-GPUs.git`.
+4. Navigate to the example folder: `cd vllm_batch_inference`.
+5. Create a `.env` file based on this [example](.env.example).
+6. Submit the job: `condor_submit job.sub`.
 
 ## FAQ
 
-1. How to find supported open source model?
+1. **How to find supported open-source models?**
 
-    Go to [Huggingface's model](https://huggingface.co/models), pick one, you can check if it supports vllm by clicking `use this model` ![hugging face vllm](img/hf-vllm.png). Please read the model instruction as some model requires approval or signing an user agreement on their website.
+    Visit [Hugging Face Models](https://huggingface.co/models), select a model, and check if it supports `vllm` by clicking `use this model`. ![hugging face vllm](img/hf-vllm.png). Note that some models require approval or signing a user agreement on their website.
 
-1. Why vllm?
+2. **Why use `vllm`?**
 
-    Currently, vllm has the higher throughput that I know of for batch offline inference.
+    `vllm` currently offers the highest throughput for batch offline inference.
 
-## About the author
+3. **Why not use the official `vllm` container?**
+
+    The official container's entrypoint is set to the API server. I need to change the Docker entrypoint to `bash`. There may be a way to modify it in the submit file, but I'm unsure how. Please let me know if you have any insights.
+
+## About the Author
 
 Contributed by [Jason from Data Science Institute, UW-Madison](https://github.com/jasonlo).
