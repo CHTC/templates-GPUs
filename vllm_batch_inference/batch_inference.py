@@ -35,9 +35,9 @@ def format_prompt(user_message: str, system_message: str | None = None) -> str:
     )
 
 
-def inference(data: list[dict], input_field: str = "input") -> list[dict]:
+def inference(data: list[dict[str, str]], input_field: str = "input") -> list[dict]:
     """Perform a batch of inference on Phi-3.5-mini-instruct via vllm offline mode.
-    
+
     docs: https://docs.vllm.ai/en/v0.6.4/getting_started/examples/offline_inference.html
     """
 
@@ -48,8 +48,7 @@ def inference(data: list[dict], input_field: str = "input") -> list[dict]:
 
     # Set sampling parameters
     sampling_params = vllm.SamplingParams(temperature=0, max_tokens=2048)
-    
-    outputs = llm.generate(prompts=formatted_inputs)
+    outputs = llm.generate(prompts=formatted_inputs, sampling_params=sampling_params)
     text_outputs = [raw_output.outputs[0].text.strip() for raw_output in outputs]
     return [{**item, "output": output} for item, output in zip(data, text_outputs)]
 

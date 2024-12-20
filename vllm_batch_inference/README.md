@@ -36,7 +36,7 @@ In this example, we will use the [Phi-3.5-mini-instruct](https://huggingface.co/
 
 3. **Why not use the official `vllm` container?**
 
-    The official container's entrypoint is set to the API server. I need to change the Docker entrypoint to `bash`. There may be a way to modify it in the submit file, but I'm unsure how. Please let me know if you have any insights.
+    The [official container's](https://hub.docker.com/r/vllm/vllm-openai/tags) entrypoint is set to the API server. I need to change the container entrypoint to `bash`. There may be a way to modify it in the submit file, but I'm unsure how. Please let me know if you have any insights.
 
 ## About the Author
 
