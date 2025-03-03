@@ -1,7 +1,7 @@
 JobBatchName            = "vLLM batch inference template"
 
 universe                = docker
-docker_image            = ghcr.io/jasonlo/vllm-bash:v0.6.4
+docker_image            = ghcr.io/jasonlo/vllm-bash:v0.7.3
 
 # Artefact
 executable              = run.sh
