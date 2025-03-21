@@ -7,6 +7,7 @@ docker_image            = ghcr.io/jasonlo/vllm-bash:v0.8.1-250321
 executable              = run.sh
 transfer_input_files    = .env, batch_inference.py, inputs.jsonl
 transfer_output_files   = outputs.jsonl
+when_to_transfer_output = ON_EXIT_OR_EVICT
 should_transfer_files   = YES
 
 # Logging
