@@ -2,7 +2,7 @@
 
 export HOME=$_CONDOR_SCRATCH_DIR
 export HF_HOME=$_CONDOR_SCRATCH_DIR/huggingface
-
+export TORCHINDUCTOR_CACHE_DIR=$_CONDOR_SCRATCH_DIR/torchinductor
 # If your job requests a single GPU, setting `CUDA_VISIBLE_DEVICES=0` ensures the system uses the correct device name and avoids errors. For multiple GPUs, set it accordingly (e.g., `0,1` for two GPUs).
 export CUDA_VISIBLE_DEVICES=0
 
