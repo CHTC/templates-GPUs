@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Generator
 
+import torch
 from vllm import LLM, SamplingParams
 
 
@@ -84,7 +85,11 @@ def save_data(data: list[dict], file: Path) -> None:
 # Note: Larger batch sizes may require more GPU memory but can be faster.
 
 data = load_data(Path("inputs.jsonl"), batch_size=20)
-llm = LLM(model="microsoft/Phi-3.5-mini-instruct", max_model_len=8192)
+llm = LLM(
+    model="microsoft/Phi-3.5-mini-instruct",
+    tensor_parallel_size=torch.cuda.device_count(),
+    max_model_len=8192,
+)
 for batch in data:
     outputs = inference(llm=llm, data=batch)
     save_data(outputs, Path("outputs.jsonl"))

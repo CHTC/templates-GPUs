@@ -60,6 +60,8 @@ Example outputs:
 
     Depending on your use case, you may need to tune your model settings in `vllm`, such as `max_tokens`, `max_model_len`, and `batch_size`. Refer to the [vllm debugging tips](https://docs.vllm.ai/en/stable/getting_started/debugging.html) for more details.
 
+6. **Does this example support tensor parallelism for large models that don't fit on a single GPU?**
+    Yes. This example supports [vLLM's tensor parallelism](https://docs.vllm.ai/en/latest/serving/distributed_serving.html) out of the box. If you request multiple GPUs, the model will automatically be distributed across them. However, note that CHTC jobs may take longer to start if you request more GPUs. Whenever possible, try to fit the model on a single GPU (e.g., by using a distilled or quantized model).
 
 ## About the Author
 
