@@ -53,10 +53,7 @@ def inference(
     temperature: float = 0.0,
     max_tokens: int = 2048,
 ) -> list[dict]:
-    """Perform a batch of inference on Phi-3.5-mini-instruct via vllm offline mode.
-
-    docs: https://docs.vllm.ai/en/v0.6.4/getting_started/examples/offline_inference.html
-    """
+    """Perform a batch of inference on Phi-3.5-mini-instruct via vllm offline mode."""
 
     inputs = [item[input_field] for item in data]
     formatted_inputs = [format_prompt(user_message=x) for x in inputs]

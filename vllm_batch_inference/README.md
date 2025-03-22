@@ -13,7 +13,7 @@ This guide demonstrates how to set up, submit, and run batch open-source LLM inf
 
 ## Introduction
 
-In this example, we will use the [Phi-3.5-mini-instruct](https://huggingface.co/microsoft/Phi-3.5-mini-instruct) model with [vLLM v0.6.4 offline inference](https://docs.vllm.ai/en/v0.6.4/getting_started/examples/offline_inference.html) to process 100 [example inputs](inputs.jsonl). The results will be written to `outputs.jsonl` and transferred back to the submit node using the `transfer_output_files` feature in `HTCondor`.
+In this example, we will use the [Phi-3.5-mini-instruct](https://huggingface.co/microsoft/Phi-3.5-mini-instruct) model with [vLLM v0.8.1 offline inference](https://docs.vllm.ai/en/v0.8.1/getting_started/examples/basic.html#example-materials) to process 100 [example inputs](inputs.jsonl). The results will be written to `outputs.jsonl` and transferred back to the submit node using the `transfer_output_files` feature in `HTCondor`.
 
 Example inputs:
 ```jsonl

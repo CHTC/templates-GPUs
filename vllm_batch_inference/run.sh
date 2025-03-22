@@ -27,9 +27,6 @@ convert_cuda_visible_devices() {
   fi
 }
 
-
-# Convert CUDA_VISIBLE_DEVICES from UUID to index format
-
 echo "Running job on `hostname`"
 echo "GPUs assigned: $CUDA_VISIBLE_DEVICES"
 
