@@ -1,9 +1,5 @@
 # Example Cat/Dog Classifier Training and Inference in CHTC
 ## Introduction
-
-ChatGPT:
-
-## Introduction
 This repository demonstrates how to train and deploy a convolutional neural network (CNN) for classifying images of cats and dogs using the Center for High Throughput Computing (CHTC) resources. This example was created for the 2025 Data Science Research Bazaar. Inspiration, data, and the original code are taken from [the original Kaggle competition](https://www.kaggle.com/c/dogs-vs-cats) and [this blog post by Dr. Juan Zamora-Mora](https://www.doczamora.com/cats-vs-dogs-binary-classifier-with-pytorch-cnn).
 
 The structure is split into a few different stages that I (Ian Ross) find myself visiting frequently when creating and deploying similar ML workflows within CHTC:
