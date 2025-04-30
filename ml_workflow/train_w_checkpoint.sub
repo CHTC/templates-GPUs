@@ -1,0 +1,29 @@
+universe = container
+docker_image = docker://iaross/catdog
+# container_image = file:///staging/iaross/catdog.sif # see our guide on converting
+
+checkpoint_exit_code        = 85
+transfer_checkpoint_files   = output/model.pth
++is_resumable = true
+
+request_disk = $(disk:500MB)
+request_memory = $(memory:6GB)
+request_cpus = $(cpus:1)
+request_gpus = 1
+gpus_minimum_capability = 7.5
+gpus_minimum_memory = 4096
+
+executable = /bin/bash
+transfer_executable = false
+arguments = train_w_checkpoint.sh
+
+transfer_input_files = train_w_checkpoint.sh,file:///staging/iaross/cat_dog/train.zip
+transfer_output_files = output
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+
+output = $(CLUSTERID).out
+error = $(CLUSTERID).err
+log = catdog_training.log
+
+queue
