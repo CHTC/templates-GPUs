@@ -51,7 +51,7 @@ Computing](https://www.r-project.org)
 Building your own containers to access a GPU requires a bit of work and will
 not be described fully here. It is best to start with a basic container that
 can access the GPU and then build upon that container. The PyTorch Docker
-container is built on top of Nvidia Cuda and is a [good example to follow](https://github.com/pytorch/pytorch/blob/master/docker/pytorch/Dockerfile).
+container is built on top of Nvidia Cuda and is a [good example to follow](https://github.com/pytorch/pytorch/blob/main/.devcontainer/Dockerfile).
 
 ```Dockerfile
 FROM nvidia/cuda:10.1-base-ubuntu18.04
