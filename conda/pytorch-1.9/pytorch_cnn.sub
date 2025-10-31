@@ -6,7 +6,7 @@ transfer_input_files = environment.yml, ../../shared/pytorch/main.py, ../../shar
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
-# The conda environment will install cudatoolkit verison 11.1
+# The conda environment will install cudatoolkit version 11.1
 # This requirement ensures the execute node has a new enough driver to run it
 # Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
 require_gpus = (DriverVersion >= 11.1)
