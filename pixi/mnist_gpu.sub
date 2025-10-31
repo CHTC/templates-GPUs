@@ -1,0 +1,50 @@
+universe = vanilla
+
+# set the log, error and output files
+log = mnist_gpu_$(Cluster)_$(Process).log.txt
+error = mnist_gpu_$(Cluster)_$(Process).err.txt
+output = mnist_gpu_$(Cluster)_$(Process).out.txt
+
+# set the executable to run
+executable = mnist_gpu.sh
+arguments = $(Process)
+
+transfer_input_files = pixi.toml, pixi.lock, ../shared/pytorch/main.py, ../shared/pytorch/MNIST_data.tar.gz
+should_transfer_files = YES
+
+# transfer the serialized trained model back
+transfer_output_files = mnist_cnn.pt
+when_to_transfer_output = ON_EXIT
+
+# Require a machine with a modern version of the CUDA driver
+requirements = (GPUs_DriverVersion >= 12.0)
+
+# We must request 1 CPU in addition to 1 GPU
+request_cpus = 1
+request_gpus = 1
+
+request_memory = 10GB
+request_disk = 30GB
+
++WantGPULab = true
++GPUJobLength = "short"
+
+# Specify the GPU hardware architecture required
+# Check against the CUDA GPU Compute Capability for your software
+# e.g. python -c "import torch; print(torch.cuda.get_arch_list())"
+# The listed 'sm_xy' values show the x.y gpu capability supported
+#
+# Note that given
+# https://github.com/conda-forge/cudnn-feedstock/issues/124
+# there can be segfaults for cudnn>=9.11 on pre-Turing devices (<=sm_70)
+# so use sm_70 as a safer lower bound
+gpus_minimum_capability = 7.0
+
+# Optional: required GPU memory
+gpus_minimum_memory = 2GB
+
+# Tell HTCondor to run 1 instances of our job
+# Given the executable, mnist_gpu.sh, is installing all dependencies from
+# a remote conda channel do not submit multiple copies of the job to avoid
+# intensive bandwidth demand.
+queue 1
