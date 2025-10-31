@@ -6,7 +6,7 @@ transfer_input_files = environment.yml, ../../shared/pytorch/main.py, ../../shar
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
 
-# The conda environment will install cudatoolkit verison 10.2
+# The conda environment will install cudatoolkit version 10.2
 # This requirement ensures the execute node has a new enough driver to run it
 # Reference https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
 # The Ampere generation GPUS (e.g. A100) cannot run with CUDA 10.2 so add a

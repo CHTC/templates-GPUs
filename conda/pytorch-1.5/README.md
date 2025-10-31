@@ -9,7 +9,7 @@ See the [CHTC conda guide](https://chtc.cs.wisc.edu/uw-research-computing/conda-
 The PyTorch example uses the MNIST dataset and Python file from the [`shared/pytorch`](../../shared/pytorch) directory.
 
 The submit file includes the requirement `CUDADriverVersion >= 10.2`.
-The verisons of CUDA available on the execute node are not used by PyTorch in this example.
+The versions of CUDA available on the execute node are not used by PyTorch in this example.
 The conda package `cudatoolkit` installs CUDA.
 However, this requirement ensures that the execute node has a new enough NVIDIA driver to run `cudatoolkit` version 10.2.
 
