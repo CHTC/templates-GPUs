@@ -3,6 +3,8 @@
 > [!CAUTION]
 > While this approach does work, as there is no shared file system cache that Pixi can leverage it is less efficient than building a Linux container with the Pixi environment and using a `container` universe job.
 > Note also that as the jobs executable, `mnist_gpu.sh`, is installing all dependencies from a remote conda channel (conda-forge), multiple copies of the job should not be submitted to avoid intensive bandwidth demand.
+>
+> Look at the example in the [`containers/pixi`](https://github.com/CHTC/templates-GPUs/tree/master/containers/pixi) directory for the recommended approach for use of Pixi with HTCondor systems with no shared file system.
 
 The example uses [Pixi](https://pixi.sh/) to create a fully reproducible PyTorch environment with CUDA support.
 The environment is already fully resolved to the digest level in the `pixi.lock` Pixi lock file, so the execution script only installs Pixi on the worker and then installs the locked environment, before running the requested training scripts.
