@@ -15,6 +15,6 @@ However, this requirement ensures that the execute node has a new enough NVIDIA 
 
 ### Usage
 - log into an HTC submit node
-- clone this repository: `git clone https://github.com/CHTC/template-GPUs`
-- `cd` into this folder: `cd template-GPUs/conda/pytorch-1.9`
+- clone this repository: `git clone https://github.com/CHTC/templates-GPUs`
+- `cd` into this folder: `cd templates-GPUs/conda/pytorch-1.9`
 - submit the sample job: `condor_submit pytorch_cnn.sub`

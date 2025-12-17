@@ -48,13 +48,13 @@ pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset
 * Clone this repository
 
 ```
-git clone https://github.com/CHTC/template-GPUs
+git clone https://github.com/CHTC/templates-GPUs
 ```
 
 * Navigate to this directory
 
 ```
-cd template-GPUs/pixi
+cd templates-GPUs/pixi
 ```
 
 * Submit the example to HTCondor
