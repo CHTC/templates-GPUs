@@ -13,6 +13,10 @@ echo -e "# Activate Pixi environment\n"
 # instead.
 . <(sed '$d' /app/entrypoint.sh)
 
+# Note: Use of nvidia-smi in Apptainer requires the '--nvccli' option.
+# https://apptainer.org/docs/user/main/gpu.html#nvidia-gpus-cuda-nvidia-container-cli
+# As of 2025-06-12, CHTC supports '--nv' but not '--nvccli' and so 'nvidia-smi'
+# will not be found.
 echo -e "\n# Check to see if the NVIDIA drivers can correctly detect the GPU:\n"
 nvidia-smi
 
