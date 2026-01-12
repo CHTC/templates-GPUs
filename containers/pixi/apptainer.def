@@ -1,0 +1,62 @@
+Bootstrap: docker
+From: ghcr.io/prefix-dev/pixi:noble
+Stage: build
+
+# %arguments have to be defined at each stage
+%arguments
+    CUDA_VERSION=12.9
+    ENVIRONMENT=default
+
+%files
+./pixi.toml /app/
+./pixi.lock /app/
+./.gitignore /app/
+
+%post
+#!/usr/bin/env bash
+export CONDA_OVERRIDE_CUDA={{ CUDA_VERSION }}
+cd /app/
+pixi info
+pixi install --locked --environment {{ ENVIRONMENT }}
+# Activate ENVIRONMENT at container runtime by using the Pixi environment
+# activation script as the container ENTRYPOINT
+echo "#!/usr/bin/env bash" > /app/entrypoint.sh && \
+pixi shell-hook --environment {{ ENVIRONMENT }} -s bash >> /app/entrypoint.sh && \
+echo 'exec "$@"' >> /app/entrypoint.sh
+
+Bootstrap: docker
+From: ghcr.io/prefix-dev/pixi:noble
+Stage: final
+
+%arguments
+    ENVIRONMENT=default
+
+%files from build
+/app/.pixi/envs/{{ ENVIRONMENT }} /app/.pixi/envs/{{ ENVIRONMENT }}
+/app/pixi.toml /app/pixi.toml
+/app/pixi.lock /app/pixi.lock
+/app/.gitignore /app/.gitignore
+# The ignore files are needed for 'pixi run' to work in the container
+/app/.pixi/.gitignore /app/.pixi/.gitignore
+/app/.pixi/.condapackageignore /app/.pixi/.condapackageignore
+/app/entrypoint.sh /app/entrypoint.sh
+
+%post
+#!/usr/bin/env bash
+cd /app/
+pixi info
+chmod +x /app/entrypoint.sh
+
+%runscript
+#!/usr/bin/env bash
+/app/entrypoint.sh "$@"
+
+%startscript
+#!/usr/bin/env bash
+/app/entrypoint.sh "$@"
+
+%test
+#!/usr/bin/env -S bash -e
+. /app/entrypoint.sh
+pixi info
+pixi list
