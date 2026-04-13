@@ -19,10 +19,12 @@ cd /app/
 pixi info
 pixi install --locked --environment {{ ENVIRONMENT }}
 # Activate ENVIRONMENT at container runtime by using the Pixi environment
-# activation script as the container ENTRYPOINT
+# activation script as the container ENTRYPOINT.
+# The ENTRYPOINT does not contain 'exec "$@"' as Apptainer will source it
+# during the env activation and an 'exec' would replace the process before
+# Apptainer completes setup.
 echo "#!/usr/bin/env bash" > /app/entrypoint.sh && \
-pixi shell-hook --environment {{ ENVIRONMENT }} -s bash >> /app/entrypoint.sh && \
-echo 'exec "$@"' >> /app/entrypoint.sh
+pixi shell-hook --environment {{ ENVIRONMENT }} -s bash >> /app/entrypoint.sh
 
 Bootstrap: docker
 From: ghcr.io/prefix-dev/pixi:noble
@@ -47,16 +49,14 @@ cd /app/
 pixi info
 chmod +x /app/entrypoint.sh
 
-%runscript
-#!/usr/bin/env bash
-/app/entrypoint.sh "$@"
-
-%startscript
-#!/usr/bin/env bash
-/app/entrypoint.sh "$@"
+%environment
+. /app/entrypoint.sh
 
 %test
 #!/usr/bin/env -S bash -e
-. /app/entrypoint.sh
+# Pixi/uv need writable cache directories if there are Python projects in the
+# environment, but during %test the root filesystem may be read-only so point
+# caches to /tmp.
+export XDG_CACHE_HOME=/tmp/.cache
 pixi info
 pixi list
