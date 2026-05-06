@@ -107,6 +107,45 @@ apptainer push mnist-gpu-noble-cuda-12.9.sif oras://ghcr.io/<your github org>/te
 Note that this manual build and publish process is slow.
 It is recommended to have this step be done through a [continuous integration and continuous delivery (CI/CD) workflow](https://carpentries-incubator.github.io/reproducible-ml-workflows/pixi-deployment.html#automation-with-github-actions-workflows-1).
 
+#### Building on CHTC
+
+Following the ["Use Custom Software in Jobs Using Apptainer" CHTC documentation](https://chtc.cs.wisc.edu/uw-research-computing/apptainer-htc.html#build-your-own-apptainer-container), the Apptainer container image can be built on CHTC in an interactive HTCondor job using the `build_apptainer_container.sub` HTCondor submit description file in this repository directory.
+On CHTC, navigate to this directory and start an interactive HTCondor job with
+
+```
+condor_submit -i ./build_apptainer_container.sub
+```
+
+Once the interactive job starts, execute the Apptainer build
+
+```
+apptainer build mnist-gpu-noble-cuda-12.9.sif ./apptainer.def
+```
+
+Once the container image is built, run it as a container to verify that the image was built correctly and has the specified software environment
+
+```
+apptainer run --containall --writable-tmpfs ./mnist-gpu-noble-cuda-12.9.sif pixi list
+```
+
+After you have verified that things are working, transfer the Apptainer container image to your CHTC staging area
+
+```
+mkdir -p /staging/$USER/apptainer/
+mv ./mnist-gpu-noble-cuda-12.9.sif /staging/$USER/apptainer/mnist-gpu-noble-cuda-12.9-sha-80ec247.sif
+```
+
+> [!WARNING]
+> OSDF and Pelican treat all cached files as immutable, so each file placed on `/staging/` should have a unique name, such as including information about the repository's Git commit SHA in the file name.
+
+Alternatively, if you exit the interactive HTCondor job without transferring the container image
+
+```
+exit
+```
+
+the Apptainer container image will be transferred back to the directory you executed the interactive job from (this directory).
+
 ### Transferring `.sif` files to HTCondor Execution Points
 
 The transferring of `.sif` files can happen one of two ways.
@@ -132,7 +171,7 @@ container_image = osdf:///chtc/staging/<user name>/apptainer/mnist-gpu-noble-cud
 > OSDF offers the advantage of [not limiting your jobs to running on locations where `/staging/` is mounted](https://chtc.cs.wisc.edu/uw-research-computing/scaling-htc#3-submitting-jobs-to-run-beyond-chtc).
 
 > [!WARNING]
-> OSDF and Pelican treat all cached files as immutable, so each file placed on `/staging/` should have a unique name, such as including information about the repository's Git commit SHA in the file name
+> OSDF and Pelican treat all cached files as immutable, so each file placed on `/staging/` should have a unique name, such as including information about the repository's Git commit SHA in the file name.
 
 #### Using a remote container registry
 

@@ -1,0 +1,12 @@
+log = build_apptainer_container_$(Process).log.txt
+
+transfer_input_files = ./apptainer.def, ./pixi.toml, ./pixi.lock, ./.gitignore
+
++IsBuildJob = True
+
+request_cpus = 2
+request_memory = 6GB
+# high disk use
+request_disk = 32GB
+
+queue
