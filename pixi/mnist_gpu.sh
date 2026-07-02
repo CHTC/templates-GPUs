@@ -13,6 +13,9 @@ curl -fsSL https://pixi.sh/install.sh | bash
 echo -e "\n# Check to see if the NVIDIA drivers can correctly detect the GPU:\n"
 nvidia-smi
 
+echo -e "\n# Check the virtual packages that Pixi detects for the worker node's platform:\n"
+pixi info
+
 # Executing a Pixi command also installs the environment.
 # If you wanted to install the environment in advance (not needed) you can
 # run `pixi install`.
