@@ -12,8 +12,12 @@ COPY . .
 ENV CONDA_OVERRIDE_CUDA=$CUDA_VERSION
 RUN pixi install --locked --environment $ENVIRONMENT
 # Activate ENVIRONMENT at container runtime by using the Pixi environment
-# activation script as the container ENTRYPOINT
+# activation script as the container ENTRYPOINT.
+# Set fallback environmental variables to guard against batch system defaults
 RUN echo "#!/usr/bin/env bash" > /app/entrypoint.sh && \
+    echo 'export USER="${USER:-$(id -u)}"' >> /app/entrypoint.sh && \
+    echo 'export LOGNAME="${LOGNAME:-$USER}"' >> /app/entrypoint.sh && \
+    echo '[ -w "${HOME:-/}" ] || export HOME="$(mktemp -d)"' >> /app/entrypoint.sh && \
     pixi shell-hook --environment $ENVIRONMENT --shell bash >> /app/entrypoint.sh && \
     echo 'exec "$@"' >> /app/entrypoint.sh
 
