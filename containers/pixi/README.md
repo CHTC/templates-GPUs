@@ -120,8 +120,18 @@ condor_submit -i ./build_apptainer_container.sub
 Once the interactive job starts, execute the Apptainer build
 
 ```
-apptainer build mnist-gpu-noble-cuda-12.9.sif ./apptainer.def
+apptainer build --mksquashfs-args '-processors 16 -mem 8G -comp zstd -Xcompression-level 3' mnist-gpu-noble-cuda-12.9.sif ./apptainer.def
 ```
+
+> [!IMPORTANT]
+> The `--mksquashfs-args` option (Apptainer v1.4.0+) bounds `mksquashfs` to the resources requested in `build_apptainer_container.sub` (`-processors` should match `request_cpus` and `-mem` should be about half of `request_memory`).
+> By default `mksquashfs` spawns one compression thread per build host CPU core and sizes its caches at 25% of the host's physical memory, ignoring the HTCondor job's resource limits, which crashes the SIF creation step on memory-limited slots.
+> Limiting the processor count also avoids a known `mksquashfs` segmentation fault under proot on hosts with many CPU cores, which is only worked around in Apptainer v1.5.2+.
+
+> [!TIP]
+> SIF compression parallelizes near-linearly with CPU cores, and `zstd` at a low compression level compresses several times faster than the default `gzip` at comparable output size: the ~10 GB rootfs of this example takes ~10 minutes with 2 cores and `gzip` but under a minute with 16+ cores and `zstd`.
+> Note that the `-Xcompression-level 3` is required for the speedup, as the `mksquashfs` default `zstd` compression level (15) is slower than `gzip`.
+> `zstd` SquashFS requires runtime support on the execute point (fine on CHTC's Apptainer v1.5.x and EL9 kernels); if your jobs may run at sites with much older kernels or Singularity versions, drop `-comp zstd -Xcompression-level 3` for maximum compatibility.
 
 Once the container image is built, run it as a container to verify that the image was built correctly and has the specified software environment
 
