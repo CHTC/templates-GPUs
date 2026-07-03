@@ -6,9 +6,9 @@ docker_pull_policy = missing
 container_image = docker://ghcr.io/matthewfeickert/templates-gpu:mnist-gpu-noble-cuda-12.9
 
 # set the log, error and output files
-log = mnist_gpu_$(Cluster)_$(Process).log.txt
-error = mnist_gpu_$(Cluster)_$(Process).err.txt
-output = mnist_gpu_$(Cluster)_$(Process).out.txt
+log = mnist_gpu_docker_$(Cluster)_$(Process).log.txt
+error = mnist_gpu_docker_$(Cluster)_$(Process).err.txt
+output = mnist_gpu_docker_$(Cluster)_$(Process).out.txt
 
 # allow for tailing files as updated
 stream_error = true
@@ -46,11 +46,8 @@ request_disk = 2GB
 # e.g. python -c "import torch; print(torch.cuda.get_arch_list())"
 # The listed 'sm_xy' values show the x.y gpu capability supported
 #
-# Note that given
-# https://github.com/conda-forge/cudnn-feedstock/issues/124
-# there can be segfaults for cudnn>=9.11 on pre-Turing devices (<=sm_70)
-# so use sm_70 as a safer lower bound
-gpus_minimum_capability = 7.0
+# c.f. https://github.com/carpentries-incubator/reproducible-ml-workflows/issues/27#issuecomment-3176999061
+gpus_minimum_capability = 7.5
 
 # Optional: required GPU memory
 gpus_minimum_memory = 2GB
