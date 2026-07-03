@@ -45,11 +45,8 @@ request_disk = 7GB
 # e.g. python -c "import torch; print(torch.cuda.get_arch_list())"
 # The listed 'sm_xy' values show the x.y gpu capability supported
 #
-# Note that given
-# https://github.com/conda-forge/cudnn-feedstock/issues/124
-# there can be segfaults for cudnn>=9.11 on pre-Turing devices (<=sm_70)
-# so use sm_70 as a safer lower bound
-gpus_minimum_capability = 7.0
+# c.f. https://github.com/carpentries-incubator/reproducible-ml-workflows/issues/27#issuecomment-3176999061
+gpus_minimum_capability = 7.5
 
 # Optional: required GPU memory
 gpus_minimum_memory = 2GB
