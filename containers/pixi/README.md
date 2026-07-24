@@ -20,8 +20,9 @@ The Pixi workspace in this example was created with the equivalent of the follow
 
 ```bash
 pixi init
-pixi workspace system-requirements add cuda 12.9
-pixi add pytorch-gpu torchvision 'cuda-version 12.9.*'
+pixi workspace platform add --cuda 12 linux-64-cuda=linux-64
+pixi workspace platform remove linux-64
+pixi add --no-install pytorch-gpu torchvision 'cuda-version 12.9.*'
 pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
 ```
 
@@ -30,20 +31,20 @@ pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset
 >
 > ```bash
 > pixi init
-> pixi workspace system-requirements add cuda 12.9
-> CONDA_OVERRIDE_CUDA=12.9 pixi add pytorch-gpu torchvision 'cuda-version 12.9.*'
+> pixi workspace platform add --cuda 12 linux-64-cuda=linux-64
+> pixi workspace platform remove linux-64
+> CONDA_OVERRIDE_CUDA=12.9 pixi add --no-install pytorch-gpu torchvision 'cuda-version 12.9.*'
 > pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
 > ```
 
 > [!NOTE]
-> If you were running these commands from an `osx-arm64` or `win-64` platform you would need to specify that `linux-64` is the target platform
+> If you were running these commands from an `osx-arm64` or `win-64` platform you would need to specify that `linux-64-cuda` is the target platform
 >
 > ```bash
 > pixi init
-> pixi workspace platform add linux-64
-> pixi workspace system-requirements add cuda 12.9
-> pixi add --platform linux-64 pytorch-gpu torchvision 'cuda-version 12.9.*'
-> pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
+> pixi workspace platform add --cuda 12 linux-64-cuda=linux-64
+> pixi add --platform linux-64-cuda --no-install pytorch-gpu torchvision 'cuda-version 12.9.*'
+> pixi task add --platform linux-64-cuda --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
 > ```
 
 ## Docker
@@ -125,14 +126,14 @@ apptainer build mnist-gpu-noble-cuda-12.9.sif ./apptainer.def
 Once the container image is built, run it as a container to verify that the image was built correctly and has the specified software environment
 
 ```
-apptainer run --containall --writable-tmpfs ./mnist-gpu-noble-cuda-12.9.sif pixi list
+apptainer run --containall --writable-tmpfs ./mnist-gpu-noble-cuda-12.9.sif pixi list --platform linux-64-cuda
 ```
 
 After you have verified that things are working, transfer the Apptainer container image to your CHTC staging area
 
 ```
 mkdir -p /staging/$USER/apptainer/
-mv ./mnist-gpu-noble-cuda-12.9.sif /staging/$USER/apptainer/mnist-gpu-noble-cuda-12.9-sha-80ec247.sif
+mv ./mnist-gpu-noble-cuda-12.9.sif /staging/$USER/apptainer/mnist-gpu-noble-cuda-12.9-sha-57a01af.sif
 ```
 
 > [!WARNING]
@@ -164,7 +165,7 @@ HTCondor submission syntax.
 **Example**:
 
 ```
-container_image = osdf:///chtc/staging/<user name>/apptainer/mnist-gpu-noble-cuda-12.9-sha-80ec247.sif
+container_image = osdf:///chtc/staging/<user name>/apptainer/mnist-gpu-noble-cuda-12.9-sha-57a01af.sif
 ```
 
 > [!TIP]

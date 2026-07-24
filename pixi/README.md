@@ -18,8 +18,9 @@ The Pixi workspace in this example was created with the equivalent of the follow
 
 ```bash
 pixi init
-pixi workspace system-requirements add cuda 12.9
-pixi add pytorch-gpu torchvision 'cuda-version 12.9.*'
+pixi workspace platform add --cuda 12 linux-64-cuda=linux-64
+pixi workspace platform remove linux-64
+pixi add --no-install pytorch-gpu torchvision 'cuda-version 12.9.*'
 pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
 ```
 
@@ -28,20 +29,20 @@ pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset
 >
 > ```bash
 > pixi init
-> pixi workspace system-requirements add cuda 12.9
-> CONDA_OVERRIDE_CUDA=12.9 pixi add pytorch-gpu torchvision 'cuda-version 12.9.*'
+> pixi workspace platform add --cuda 12 linux-64-cuda=linux-64
+> pixi workspace platform remove linux-64
+> CONDA_OVERRIDE_CUDA=12.9 pixi add --no-install pytorch-gpu torchvision 'cuda-version 12.9.*'
 > pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
 > ```
 
 > [!NOTE]
-> If you were running these commands from an `osx-arm64` or `win-64` platform you would need to specify that `linux-64` is the target platform
+> If you were running these commands from an `osx-arm64` or `win-64` platform you would need to specify that `linux-64-cuda` is the target platform
 >
 > ```bash
 > pixi init
-> pixi workspace platform add linux-64
-> pixi workspace system-requirements add cuda 12.9
-> pixi add --platform linux-64 pytorch-gpu torchvision 'cuda-version 12.9.*'
-> pixi task add --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
+> pixi workspace platform add --cuda 12 linux-64-cuda=linux-64
+> pixi add --platform linux-64-cuda --no-install pytorch-gpu torchvision 'cuda-version 12.9.*'
+> pixi task add --platform linux-64-cuda --description "Train a PyTorch CNN classifier on the MNIST dataset" train "python ./main.py --epochs 20 --save-model"
 > ```
 
 ## Use
