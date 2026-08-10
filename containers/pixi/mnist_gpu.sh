@@ -20,6 +20,9 @@ echo -e "# Activate Pixi environment\n"
 echo -e "\n# Check to see if the NVIDIA drivers can correctly detect the GPU:\n"
 nvidia-smi
 
+echo -e "\n# Check the virtual packages that Pixi detects for the worker node's platform:\n"
+pixi info
+
 echo -e "\n# Extract the training data:\n"
 if [ -f "MNIST_data.tar.gz" ]; then
     tar -vxzf MNIST_data.tar.gz

@@ -1,7 +1,10 @@
 # Must set the universe to 'container' to use Apptainer
 universe = container
-# Replace this with whatever container image you build yourself
+# Replace with whatever container image you build yourself
+# remote container registry
 container_image = oras://ghcr.io/matthewfeickert/templates-gpus:apptainer-mnist-gpu-noble-cuda-12.9
+# CHTC /staging and OSDF caching
+# container_image = osdf:///chtc/staging/mfeickert/apptainer/mnist-gpu-noble-cuda-12.9-sha-57a01af.sif
 
 # set the log, error and output files
 log = mnist_gpu_apptainer_$(Cluster)_$(Process).log.txt

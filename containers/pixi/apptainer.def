@@ -31,6 +31,7 @@ From: ghcr.io/prefix-dev/pixi:noble
 Stage: final
 
 %arguments
+    CUDA_VERSION=12.9
     ENVIRONMENT=default
 
 %files from build
@@ -59,4 +60,4 @@ chmod +x /app/entrypoint.sh
 # caches to /tmp.
 export XDG_CACHE_HOME=/tmp/.cache
 pixi info
-pixi list
+CONDA_OVERRIDE_CUDA={{ CUDA_VERSION }} pixi list

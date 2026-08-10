@@ -2,8 +2,8 @@
 universe = container
 # To avoid excessive pulls, and potential rate limits, set as "missing" (default value)
 docker_pull_policy = missing
-# Replace this with whatever container image you build yourself
-container_image = docker://ghcr.io/matthewfeickert/templates-gpu:mnist-gpu-noble-cuda-12.9
+# Replace with whatever container image you build yourself
+container_image = docker://ghcr.io/matthewfeickert/templates-gpus:mnist-gpu-noble-cuda-12.9
 
 # set the log, error and output files
 log = mnist_gpu_docker_$(Cluster)_$(Process).log.txt
