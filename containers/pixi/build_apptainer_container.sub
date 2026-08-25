@@ -4,8 +4,20 @@ transfer_input_files = ./apptainer.def, ./pixi.toml, ./pixi.lock, ./.gitignore
 
 +IsBuildJob = True
 
-request_cpus = 2
-request_memory = 6GB
+# mksquashfs configures itself from the build host (one compression thread
+# per host CPU core, caches sized at 25% of the host's physical memory)
+# rather than from the job's resource limits, so the SIF creation step can
+# crash on memory-limited slots. Pass '--mksquashfs-args' to apptainer
+# build as documented in README.md to bound mksquashfs to the requested
+# resources and to avoid a known mksquashfs segfault under proot on
+# many-core hosts (worked around in Apptainer v1.5.2+).
+# SIF compression parallelizes near-linearly with CPU cores; keep
+# '-processors' in '--mksquashfs-args' matched to request_cpus.
+request_cpus = 16
+# '-mem' in '--mksquashfs-args' should be about half of request_memory.
+# 16GB also covers the observed unconstrained mksquashfs peak of ~1.4x the
+# ~10 GB uncompressed rootfs if building without '--mksquashfs-args'.
+request_memory = 16GB
 # high disk use
 request_disk = 32GB
 

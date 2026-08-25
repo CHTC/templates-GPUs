@@ -120,8 +120,22 @@ condor_submit -i ./build_apptainer_container.sub
 Once the interactive job starts, execute the Apptainer build
 
 ```
-apptainer build mnist-gpu-noble-cuda-12.9.sif ./apptainer.def
+apptainer build --ignore-proot --mksquashfs-args '-processors 16 -mem 8G -comp zstd -Xcompression-level 3' mnist-gpu-noble-cuda-12.9.sif ./apptainer.def
 ```
+
+> [!IMPORTANT]
+> The `--mksquashfs-args` option (Apptainer v1.4.0+) bounds `mksquashfs` to the resources requested in `build_apptainer_container.sub` (`-processors` should match `request_cpus` and `-mem` should be about half of `request_memory`).
+> By default `mksquashfs` spawns one compression thread per build host CPU core and sizes its caches at 25% of the host's physical memory, ignoring the HTCondor job's resource limits, which crashes the SIF creation step on memory-limited slots.
+
+> [!IMPORTANT]
+> The (hidden) `--ignore-proot` option works around a known segmentation fault (`exit status 139`) in `mksquashfs` when it is run under `proot`, as happens during unprivileged builds with Apptainer v1.5.0+ ([apptainer/apptainer#3560](https://github.com/apptainer/apptainer/issues/3560)).
+> It skips the `proot` wrapping of `mksquashfs` entirely, at the cost of all files in the SIF image being owned by `root` — fine for runtime containers like this one that are not sensitive to file ownership.
+> The workaround shipped in Apptainer v1.5.2 (pinning `MALLOC_ARENA_MAX=1000000` in the `mksquashfs` environment, [apptainer/apptainer#3572](https://github.com/apptainer/apptainer/pull/3572)) has been observed to not prevent the crash on CHTC (Apptainer v1.5.1 on EL9 with the equivalent `export MALLOC_ARENA_MAX=1000000` applied), so `--ignore-proot` is recommended even on Apptainer v1.5.2+ until the upstream issue is fully resolved.
+
+> [!TIP]
+> SIF compression parallelizes near-linearly with CPU cores, and `zstd` at a low compression level compresses several times faster than the default `gzip` at comparable output size: the ~10 GB rootfs of this example takes ~10 minutes with 2 cores and `gzip` but under a minute with 16+ cores and `zstd`.
+> Note that the `-Xcompression-level 3` is required for the speedup, as the `mksquashfs` default `zstd` compression level (15) is slower than `gzip`.
+> `zstd` SquashFS requires runtime support on the execute point (fine on CHTC's Apptainer v1.5.x and EL9 kernels); if your jobs may run at sites with much older kernels or Singularity versions, drop `-comp zstd -Xcompression-level 3` for maximum compatibility.
 
 Once the container image is built, run it as a container to verify that the image was built correctly and has the specified software environment
 
