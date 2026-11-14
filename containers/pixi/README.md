@@ -129,11 +129,11 @@ Once the container image is built, run it as a container to verify that the imag
 apptainer run --containall --writable-tmpfs ./mnist-gpu-noble-cuda-12.9.sif pixi list --platform linux-64-cuda
 ```
 
-After you have verified that things are working, transfer the Apptainer container image to your CHTC staging area
+After you have verified that things are working, transfer the Apptainer container image to your CHTC staging area (where `value` in `sha-value` is a unique value such as the current Git commit SHA, like `sha-1abc234`)
 
 ```
-mkdir -p /staging/$USER/apptainer/
-mv ./mnist-gpu-noble-cuda-12.9.sif /staging/$USER/apptainer/mnist-gpu-noble-cuda-12.9-sha-57a01af.sif
+mkdir -p /staging/${USER:0:1}/$USER/apptainer/
+mv ./mnist-gpu-noble-cuda-12.9.sif /staging/${USER:0:1}/$USER/apptainer/mnist-gpu-noble-cuda-12.9-sha-value.sif
 ```
 
 > [!WARNING]
@@ -154,10 +154,10 @@ Both involve setting the `container` universe in the submission file along with 
 
 #### Transferring from CHTC `/staging`
 
-Container `.sif` files on CHTC's `/staging/<username>` storage are cached with [ODSF](https://osg-htc.org/services/osdf), and transferred to HTCondor jobs using the
+Container `.sif` files on CHTC's `/staging/<u>/<username>` storage (where `<u>` is the first letter of your NetID, e.g. `/staging/a/alice`) are cached with [ODSF](https://osg-htc.org/services/osdf), and transferred to HTCondor jobs using the
 
 ```
-container_image = osdf:///chtc/staging/<username>/<container image name>.sif
+container_image = osdf:///chtc/staging/<u>/<username>/<container image name>.sif
 ```
 
 HTCondor submission syntax.
@@ -165,7 +165,7 @@ HTCondor submission syntax.
 **Example**:
 
 ```
-container_image = osdf:///chtc/staging/<user name>/apptainer/mnist-gpu-noble-cuda-12.9-sha-57a01af.sif
+container_image = osdf:///chtc/staging/<u>/<username>/apptainer/mnist-gpu-noble-cuda-12.9-sha-value.sif
 ```
 
 > [!TIP]

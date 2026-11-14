@@ -4,7 +4,7 @@ universe = container
 # remote container registry
 container_image = oras://ghcr.io/matthewfeickert/templates-gpus:apptainer-mnist-gpu-noble-cuda-12.9
 # CHTC /staging and OSDF caching
-# container_image = osdf:///chtc/staging/mfeickert/apptainer/mnist-gpu-noble-cuda-12.9-sha-57a01af.sif
+# container_image = osdf:///chtc/staging/m/mfeickert/apptainer/mnist-gpu-noble-cuda-12.9-sha-8ebe927.sif
 
 # set the log, error and output files
 log = mnist_gpu_apptainer_$(Cluster)_$(Process).log.txt

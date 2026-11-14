@@ -10,6 +10,6 @@ description = "Train a PyTorch CNN classifier on the MNIST dataset"
 cmd = "python ./main.py --epochs 20 --save-model"
 
 [dependencies]
-pytorch-gpu = ">=2.12.1,<3"
-torchvision = ">=0.27.1,<0.28"
-cuda-version = "12.9.*"
+pytorch-gpu = ">=2.13.0,<3"
+torchvision = ">=0.28.0,<0.29"
+cuda-version = ">=12.9,<13"
